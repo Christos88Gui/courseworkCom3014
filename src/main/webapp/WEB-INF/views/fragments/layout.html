@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+</head>
+<body>
+
+
+<!-- Header -->
+<div class="navbar navbar-inverse navbar-fixed-top" th:fragment="header" style="background-color: black">
+    <div class="container">       
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li th:classappend="${module == 'home' ? 'active' : ''}">
+                    <a href="#" th:href="@{/}" class="navbarTab">
+                        Home
+                    </a>
+                </li>
+                <li th:classappend="${module == 'about' ? 'active' : ''}" style="position: relative;">
+                    <a href="#about" th:href="@{/about}" class="navbarTab">
+                        About
+                    </a>
+                </li>
+                <li>
+                   <a href="#userAccount" th:href="@{/userAccount}" class="navbarTab">
+                       My Account
+                    </a>                 
+                </li>
+<!--                <li>                
+                <img src="resources/images/LOGO.png"  height="50" width="470" style="position: relative; left:130px; top:4px">
+                </li>-->
+            </ul>
+          
+            <ul class="nav navbar-nav navbar-right">
+                <li th:if="${#authorization.expression('!isAuthenticated()')}">
+                    <a href="/signin" th:href="@{/signin}" class="navbarTab">
+                        Sign In
+                    </a>                    
+                </li>
+                <li th:if="${#authorization.expression('!isAuthenticated()')}">
+                   <a href="/signup" th:href="@{/signup}" class="navbarTab">
+                        Sign Up
+                    </a>                 
+                </li>
+                   
+                <li th:if="${#authorization.expression('isAuthenticated()')}">
+                    <a href="/logout" th:href="@{#}" onclick="$('#form').submit();" class="navbarTab">
+                        Logout
+                    </a>
+                    <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="float: right">
+    
+</div>
+
+<!-- Footer -->
+<div th:fragment="footer" th:align="center" >
+<!--    &copy;&nbsp;<span th:text="${#temporals.format(#temporals.createNow(), 'yyyy')}">2017</span>
+    Demo project <span th:text="${@environment.getProperty('app.version')}"></span>-->
+</div>
+
+</body>
+</html>
+

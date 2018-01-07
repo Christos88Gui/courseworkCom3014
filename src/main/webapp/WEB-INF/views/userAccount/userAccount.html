@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{view.index.title}">Welcome!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <script src="../../../resources/js/jquery.min.js" th:src="@{/resources/js/jquery.min.js}"></script>
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+    <style>
+        p{
+            font-size:18px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="fragments/layout :: header"></div>
+<img id="img" src="https://upload.wikimedia.org/wikipedia/commons/f/f1/04082013_-_Venice_Beach_-_L.A._California_%289591344501%29.jpg">
+
+<br><br><br><br>
+<div class="container homepageContainer" >
+    <h2>Your Account</h3><br><br>
+    <p style="position:relative" th:text="'Email: ' + ${email}" />   
+    <p style="position:relative" th:text="'Firstname: ' + ${firstname}" />  
+    <p style="position:relative" th:text="'Lastname: ' + ${lastname}" />      
+    <p style="position:relative" th:text="'Role: ' + ${role}" />
+</div>
+
+<div th:replace="fragments/layout :: footer"></div>
+</body>
+</html>

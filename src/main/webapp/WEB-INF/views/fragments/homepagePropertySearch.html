@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+</head>
+<body onload = "startTimer()">
+
+<!-- Home Page Search Property Dialog -->
+<div th:fragment="searchDialog">
+    <div class="container homepageContainer">
+        <form class="homepageForm" >
+            <br>
+            <div class="form-group">
+                <label for="BedNum" >Number of bedrooms</label>
+                <select class="form-control" id="BedNum">
+                    <option>Not specified</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5 and more</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="PropertyType">Property Type</label>
+                <select class="form-control" id="PropertyType">
+                    <option>Not specified</option>
+                    <option>Bungalow</option>
+                    <option>Detatched/Semi-detatched House</option>
+                    <option>Flat/Apartment</option>
+                    <option>Flat share</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Price per month (Min to Max)</label>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <select class="homepageMinPriceDropdown form-control">
+                            <option>NO MIN</option>
+                            <option>300$</option>
+                            <option>400$</option>
+                            <option>500$</option>
+                            <option>600$</option>
+                            <option>700$</option>
+                            <option>800$</option>
+                            <option>900$</option>
+                            <option>1000$</option>
+                            <option>1500$</option>
+                            <option>2000$</option>
+                            <option>2500$</option>
+                            <option>3000$ and more</option>
+                        </select>
+                        <select class="homepageMaxPriceDropdown form-control">
+                            <option>NO MAX</option>
+                            <option>300$</option>
+                            <option>400$</option>
+                            <option>500$</option>
+                            <option>600$</option>
+                            <option>700$</option>
+                            <option>800$</option>
+                            <option>900$</option>
+                            <option>1000$</option>
+                            <option>1500$</option>
+                            <option>2000$</option>
+                            <option>2500$</option>
+                            <option>3000$ and more</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <button class="btn btn-default homepageFormButton" onclick="doSomething()" type="submit">Search</button>
+            <br><br><br>
+        </form>
+
+    </div>
+
+</div>
+
+<div th:fragment="dummyPropertyData" style="width:100%;height:100%;">
+    <div id="properties"></div>   
+</div>
+
+<div th:fragment="dummySlider">
+<div class="container" style="margin: 50px; width:60%; height:350px; float: left">
+        <div class="row">
+            
+            <div class="col-lg-1">
+                <button style="float:right;" class="cstmBtn" onclick="displayPreviousImage()">
+                <span class=" glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                </button>
+            </div>                
+            
+            <div class="col-lg-9">                
+            <img style="width:100%; height:350px; border:2px solid black; margin:0 auto; display:block" id="img" src="https://i.pinimg.com/736x/73/de/32/73de32f9e5a0db66ec7805bb7cb3f807--navy-blue-houses-blue-and-white-houses-exterior.jpg">                                                                             
+            </div>
+            
+            <div class="col-lg-1">
+                <button style="float:left;" class="cstmBtn" onclick="displayNextImage()">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            </button> 
+            </div>                
+        </div>          
+    </div>
+</div>
+
+
+</body>
+</html>
+    
+    
+    <script>
+
+        var jsonObj =
+            {
+                items: [
+                    {
+                        index: 1,
+                        name: 'Kim',
+                        price: 102046,
+                        emailOfOwner: 'anne@mccall.az',
+                        forSale: true,
+                        forRent: false,
+                        imagePath: 'undefined'
+                    },
+                    {
+                        index: 2,
+                        name: 'Jonathan',
+                        price: 127764,
+                        emailOfOwner: 'tim@conner.kp',
+                        forSale: true,
+                        forRent: false,
+                        imagePath: 'undefined'
+                    },
+                    {
+                        index: 3,
+                        name: 'Alicia',
+                        price: 7892,
+                        emailOfOwner: 'seth@connolly.gq',
+                        forSale: true,
+                        forRent: false,
+                        imagePath: 'undefined'
+                    },
+                    {
+                        index: 4,
+                        name: 'Julian',
+                        price: 158647,
+                        emailOfOwner: 'katherine@dodson.lc',
+                        forSale: true,
+                        forRent: true,
+                        imagePath: 'undefined'
+                    },
+                    {
+                        index: 5,
+                        name: 'Catherine',
+                        price: 105484,
+                        emailOfOwner: 'holly@warren.ro',
+                        forSale: true,
+                        forRent: false,
+                        imagePath: 'undefined'
+                    },
+                    {
+                        index: 6,
+                        name: 'Jeanette',
+                        price: 38917,
+                        emailOfOwner: 'leslie@stevenson.io',
+                        forSale: false,
+                        forRent: false,
+                        imagePath: 'undefined'
+                    },
+                    {
+                        index: 7,
+                        name: 'Carlos',
+                        price: 3995,
+                        emailOfOwner: 'jerome@mckenzie.ng',
+                        forSale: false,
+                        forRent: false,
+                        imagePath: 'undefined'
+                    },
+                    {
+                        index: 8,
+                        name: 'Raymond',
+                        price: 91390,
+                        emailOfOwner: 'rodney@copeland.dm',
+                        forSale: true,
+                        forRent: true,
+                        imagePath: 'undefined'
+                    },
+                    {
+                        index: 9,
+                        name: 'Jane',
+                        price: 199214,
+                        emailOfOwner: 'patsy@blackburn.gb',
+                        forSale: false,
+                        forRent: false,
+                        imagePath: 'undefined'
+                    },
+                    {
+                        index: 11,
+                        name: 'Joel',
+                        price: 161368,
+                        emailOfOwner: 'stacy@ritchie.ch',
+                        forSale: true,
+                        forRent: false,
+                        imagePath: 'undefined'
+                    },
+                    {
+                        index: 12,
+                        name: 'Joel',
+                        price: 161368,
+                        emailOfOwner: 'stacy@ritchie.ch',
+                        forSale: true,
+                        forRent: false,
+                        imagePath: 'undefined'
+                    },
+                    {
+                        index: 13,
+                        name: 'Joel',
+                        price: 161368,
+                        emailOfOwner: 'stacy@ritchie.ch',
+                        forSale: true,
+                        forRent: false,
+                        imagePath: 'undefined'
+                    },
+                    {
+                        index: 14,
+                        name: 'Joel',
+                        price: 161368,
+                        emailOfOwner: 'stacy@ritchie.ch',
+                        forSale: true,
+                        forRent: false,
+                        imagePath: 'undefined'
+                    },
+                    {
+                        index: 15,
+                        name: 'Joel',
+                        price: 161368,
+                        emailOfOwner: 'stacy@ritchie.ch',
+                        forSale: true,
+                        forRent: false,
+                        imagePath: 'undefined'
+                    },
+                    {
+                        index: 16,
+                        name: 'Joel',
+                        price: 161368,
+                        emailOfOwner: 'stacy@ritchie.ch',
+                        forSale: true,
+                        forRent: false,
+                        imagePath: 'undefined'
+                    },
+                    {
+                        index: 17,
+                        name: 'Joel',
+                        price: 161368,
+                        emailOfOwner: 'stacy@ritchie.ch',
+                        forSale: true,
+                        forRent: false,
+                        imagePath: 'undefined'
+                    },
+                    {
+                        index: 18,
+                        name: 'Joel',
+                        price: 161368,
+                        emailOfOwner: 'stacy@ritchie.ch',
+                        forSale: true,
+                        forRent: false,
+                        imagePath: 'undefined'
+                    },
+                    {
+                        index: 19,
+                        name: 'Joel',
+                        price: 161368,
+                        emailOfOwner: 'stacy@ritchie.ch',
+                        forSale: true,
+                        forRent: false,
+                        imagePath: 'undefined'
+                    },
+                    {
+                        index: 20,
+                        name: 'Joel',
+                        price: 161368,
+                        emailOfOwner: 'stacy@ritchie.ch',
+                        forSale: true,
+                        forRent: false,
+                        imagePath: 'undefined'
+                    },
+                    {
+                        index: 21,
+                        name: 'Joel',
+                        price: 161368,
+                        emailOfOwner: 'stacy@ritchie.ch',
+                        forSale: true,
+                        forRent: false,
+                        imagePath: 'undefined'
+                    },
+                    {
+                        index: 22,
+                        name: 'Joel',
+                        price: 161368,
+                        emailOfOwner: 'stacy@ritchie.ch',
+                        forSale: true,
+                        forRent: false,
+                        imagePath: 'undefined'
+                    },
+                    {
+                        index: 23,
+                        name: 'Joel',
+                        price: 161368,
+                        emailOfOwner: 'stacy@ritchie.ch',
+                        forSale: true,
+                        forRent: false,
+                        imagePath: 'undefined'
+                    }
+                ]
+            };
+
+        function doSomething() {
+            alert("Results will be populated below");
+            var news = document.getElementById("properties");
+            news.classList.add("grid");
+            news.style.marginTop = "15px";
+            for(var i = 0; i < 23; i++) {
+                console.log("banana");
+                var div = document.createElement("div");
+                var h5 = document.createElement("h5");
+                h5.innerHTML = jsonObj.items[i].name;
+                div.appendChild(h5);
+                var p = document.createElement("p");
+                p.innerHTML = jsonObj.items[i].emailOfOwner;
+                div.classList.add("module");
+                div.appendChild(p);
+                news.appendChild(div);
+                console.log("New div created");
+                console.log(div);
+            }
+        }
+    </script>
+
+

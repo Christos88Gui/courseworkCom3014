@@ -1,0 +1,141 @@
+body {
+    padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+    padding-bottom: 40px;
+    background-color: black;
+    
+    background-repeat: no-repeat;
+    font-family: 'Century Gothic';
+}
+
+#img{
+            background-repeat:no-repeat;
+            background-size:cover;
+            position:absolute; width:100%; height:100%
+        }
+
+.cstmBtn, .cstmBtn:hover,.cstmBtn:active, .cstmBtn:after {
+            font-size: 20px;
+            background-color: transparent;
+            border:none;
+            }
+
+.form-control{
+    border: 1px solid black;
+    
+}
+
+.btn-default{
+    border: 1px solid black;
+    
+}
+
+.form-narrow {
+    color:black;
+    max-width: 490px;
+    padding: 19px 29px 29px;
+    margin: 0 auto 20px;
+    background-color:#EED8D3;
+    
+}
+
+.navbarTab {
+    font-size: 25px;
+}
+
+.homepageContainer{
+    width:600px;    
+    height:auto;    
+    font-size:15px;
+    outline: 2px solid black;
+    color:black; 
+    background-color:rgba(255, 255, 255, 0.8);
+    
+    position:relative;             
+    top:50%;
+
+}
+
+@media screen and (max-width: 960px) {
+    .homepageContainer {
+        /*width: 300px;*/
+    }
+}
+
+
+.homepageForm > .form-group > .form-control{
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.homepageForm > .form-group > .form-control:active{
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.homepageForm > .form-group > .row > .col-lg-12 > .form-control{
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.homepageMinPriceDropdown{
+    width:40%;
+    float:left;
+}
+
+.homepageMaxPriceDropdown{
+    width:40%;
+    float:right;
+}
+
+.homepageFormButton{
+    border: 1px solid black;
+    border-radius: 10px;
+    width:40%
+}
+
+.homepageFormButton:hover{
+    border: 1px solid black;
+    border-radius: 10px;
+    width:40%
+}
+
+.homepageFormButton:active{
+    border: 1px solid black;
+    border-radius: 10px;
+    width:40%
+}
+
+.grid {
+    /* Grid Fallback */
+    display: flex;
+    flex-wrap: wrap;
+
+    /* Supports Grid */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: minmax(150px, auto);
+    grid-gap: 1em;
+}
+
+.module {
+    /* Demo-Specific Styles */
+    background: #eaeaea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+
+    /* Flex Fallback */
+    margin-left: 5px;
+    margin-right: 5px;
+    flex: 1 1 200px;
+
+}
+
+/* If Grid is supported, remove the margin we set for the fallback */
+/*@supports (display: grid) {
+    .module {
+        margin: 20px;
+
+    }
+}*/

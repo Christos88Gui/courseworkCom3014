@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <script src="../../../resources/js/jquery.min.js" th:src="@{/resources/js/jquery.min.js}"></script>
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>      
+</head>
+<body onload="startTimer()">    
+    <div th:replace="fragments/layout :: header">
+    </div>
+    <img id="img" src="https://upload.wikimedia.org/wikipedia/commons/f/f1/04082013_-_Venice_Beach_-_L.A._California_%289591344501%29.jpg">
+    
+    <br><br><br><br><br><br>
+    <div th:replace="fragments/homepagePropertySearch :: searchDialog"></div>
+</body>
+
+
+<script th:inline="javascript" type="text/javascript">
+    /* Fill in modal with content loaded with Ajax */
+    $(document).ready(function () {
+        $('#signup').on('click', function () {
+            $("#signup-modal").modal();
+            $("#signup-modal-body").text("");
+            $.ajax({
+                url: "signup",
+                cache: false
+            }).done(function (html) {
+                $("#signup-modal-body").append(html);
+            });
+        });
+    });
+
+          function displayNextImage() {
+              x = (x === images.length - 1) ? 0 : x + 1;
+             document.getElementById("imsg").src = images[x];
+//             var body = document.getElementsByTagName('body')[0];
+//            body.style.backgroundImage = 'url(' + images[x] + ')';
+          }
+
+          function displayPreviousImage() {
+              x = (x <= 0) ? images.length - 1 : x - 1;
+              document.getElementById("img").src = images[x];
+          }
+
+          function startTimer() {
+              setInterval(displayNextImage, 4000);
+          }
+
+          var images = [], x = -1;
+          images[0] = "http://www.publicdomainpictures.net/pictures/160000/velka/rural-highway-california.jpg";
+          images[1] = "https://upload.wikimedia.org/wikipedia/commons/f/f1/04082013_-_Venice_Beach_-_L.A._California_%289591344501%29.jpg";
+          images[2] = "https://upload.wikimedia.org/wikipedia/commons/5/57/LA_Skyline_Mountains2.jpg";
+      </script>
+      
+     
