@@ -5,6 +5,7 @@
  */
 package courseworkCom3014.property;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,7 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "property")
-public class Property {
+public class Property implements Serializable {
     
     @Id
     @GeneratedValue
@@ -35,9 +36,11 @@ public class Property {
     
     private String description;   
 
+    public Property() {
+    }
+   
     
-    public Property(Long id, String address, String postcode, int square_meters, int year_built, double price, String description) {
-        this.id = id;
+    public Property(String address, String postcode, int square_meters, int year_built, double price, String description) {        
         this.address = address;
         this.postcode = postcode;
         this.square_meters = square_meters;

@@ -48,8 +48,22 @@ class JpaConfig {
     private String formatSql;
     @Value("${hibernate.use_sql_comments}")
     private String useSqlComments;
-
-    @Bean
+//
+//    @Bean
+//    public DataSource dataSource() {
+//        HikariConfig config = new HikariConfig();
+//        config.setDriverClassName(driver);
+//        config.setJdbcUrl(url);
+//        config.setUsername(username);
+//        config.setPassword(password);
+//        config.addDataSourceProperty("cachePrepStmts", "true");
+//        config.addDataSourceProperty("prepStmtCacheSize", "250");
+//        config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+//        config.addDataSourceProperty("useServerPrepStmts", "true");
+//
+//        return new HikariDataSource(config);
+//    }
+@Bean
     public DataSource dataSource() {
         HikariConfig config = new HikariConfig();
         config.setDriverClassName(driver);
@@ -63,8 +77,6 @@ class JpaConfig {
 
         return new HikariDataSource(config);
     }
-
-    
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {

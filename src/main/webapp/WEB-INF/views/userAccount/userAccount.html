@@ -11,6 +11,7 @@
         p{
             font-size:18px;
         }
+   
     </style>
 </head>
 <body>
@@ -20,10 +21,13 @@
 <br><br><br><br>
 <div class="container homepageContainer" >
     <h2>Your Account</h3><br><br>
-    <p style="position:relative" th:text="'Email: ' + ${email}" />   
-    <p style="position:relative" th:text="'Firstname: ' + ${firstname}" />  
-    <p style="position:relative" th:text="'Lastname: ' + ${lastname}" />      
-    <p style="position:relative" th:text="'Role: ' + ${role}" />
+    
+    <th:block>
+    <p style="position:relative" th:text="'Email: ' + ${account.email}" />   
+    <p style="position:relative" th:text="'Firstname: ' + ${account.firstname}" />  
+    <p style="position:relative" th:text="'Lastname: ' + ${account.lastname}" />       
+    </th:block>
+    
 </div>
 
 <div th:replace="fragments/layout :: footer"></div>

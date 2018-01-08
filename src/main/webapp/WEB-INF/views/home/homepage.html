@@ -6,15 +6,35 @@
     <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
     <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
     <script src="../../../resources/js/jquery.min.js" th:src="@{/resources/js/jquery.min.js}"></script>
-    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>      
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>    
+    
+    <style>
+        body{
+        min-width: 700px;    
+        }
+        
+    </style>
 </head>
 <body onload="startTimer()">    
     <div th:replace="fragments/layout :: header">
     </div>
+
     <img id="img" src="https://upload.wikimedia.org/wikipedia/commons/f/f1/04082013_-_Venice_Beach_-_L.A._California_%289591344501%29.jpg">
     
-    <br><br><br><br><br><br>
-    <div th:replace="fragments/homepagePropertySearch :: searchDialog"></div>
+    <br><br><br><br><br><br><br><br><br><br>
+    
+    <div class="row homepageContainer">
+        <div class="col-lg-6">
+            <div th:replace="fragments/homepagePropertySearch :: searchDialog"></div>
+        </div>
+        <div class="col-lg-6">
+            <br>
+            <h1>Our latest properties...</h1><br>
+            <img id="homepageSlider" src="resources/images/img.jpg"> 
+           
+        </div>
+        
+    </div>
 </body>
 
 
@@ -35,14 +55,14 @@
 
           function displayNextImage() {
               x = (x === images.length - 1) ? 0 : x + 1;
-             document.getElementById("imsg").src = images[x];
+             document.getElementById("homepageSlider").src = images[x];
 //             var body = document.getElementsByTagName('body')[0];
 //            body.style.backgroundImage = 'url(' + images[x] + ')';
           }
 
           function displayPreviousImage() {
               x = (x <= 0) ? images.length - 1 : x - 1;
-              document.getElementById("img").src = images[x];
+              document.getElementById("homepageSlider").src = images[x];
           }
 
           function startTimer() {

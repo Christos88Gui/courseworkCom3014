@@ -28,18 +28,11 @@ public class UserAccountController {
              
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();      
         String email = auth.getName();
-        Account account = accountRepository.findOneByEmail(email);        
+        Account account = accountRepository.findOneByEmail(email);      
+                      
         
-                       
-        String firstname = account.getFirstname();
-        String lastname = account.getLastname();
-        String role = account.getRole();
-        
-        model.addAttribute("email", email );    
+        model.addAttribute("account",account);    
 	
-        model.addAttribute("firstname", firstname );
-        model.addAttribute("lastname", lastname );      
-        model.addAttribute("role", role ); 
         
         return "userAccount/userAccount";
 	}

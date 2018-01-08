@@ -6,6 +6,18 @@ body {
     background-repeat: no-repeat;
     font-family: 'Century Gothic';
 }
+ .homepageTitle{
+        position:relative; 
+        font-size: 35px; 
+        color:black;
+ }
+ 
+ #homepageSlider{
+ height:330px; 
+ width:700px; 
+ border: 2px solid black;
+ }
+ 
 
 #img{
             background-repeat:no-repeat;
@@ -43,12 +55,12 @@ body {
 }
 
 .homepageContainer{
-    width:600px;    
+        
     height:auto;    
     font-size:15px;
     outline: 2px solid black;
     color:black; 
-    background-color:rgba(255, 255, 255, 0.8);
+    background-color:rgba(255, 255, 255, 0.9);
     
     position:relative;             
     top:50%;
