@@ -25,9 +25,9 @@
 <h1>All Properties</h1><br><br>
 <th:block th:each="property : ${properties}">
             <div class="col-lg-4">
-                   <div class="container homepageContainer" style="width:auto; background:white"> 
+                   <div class="container propertyContainer" style="width:auto; background:white"> 
                        <br>
-                        <img style="float:right; width:230px; height:200px; border:1px solid black" src="resources/images/img.jpg">
+                        <img class="propertyImage" src="resources/images/img.jpg">
 
                         <p class="propertyDetails" th:text="'Address: ' + ${property.address}" />
                         <p class="propertyDetails" th:text="'Postcode: ' + ${property.postcode}" />
