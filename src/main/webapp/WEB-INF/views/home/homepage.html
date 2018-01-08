@@ -23,7 +23,7 @@
     
     <br><br><br><br><br><br><br><br><br><br>
     
-    <div class="row homepageContainer">
+<!--    <div class="row homepageContainer">
         <div class="col-lg-6">
             <div th:replace="fragments/homepagePropertySearch :: searchDialog"></div>
         </div>
@@ -31,10 +31,12 @@
             <br>
             <h1>Our latest properties...</h1><br>
             <img id="homepageSlider" src="resources/images/img.jpg"> 
-           
+            <div th:replace="fragments/homepagePropertySearch :: dummySlider"></div>
         </div>
         
-    </div>
+    </div>-->
+
+<div th:replace="fragments/homepagePropertySearch :: homepageRow"></div>
 </body>
 
 

@@ -6,16 +6,14 @@ body {
     background-repeat: no-repeat;
     font-family: 'Century Gothic';
 }
- .homepageTitle{
+ .customHeader{
         position:relative; 
         font-size: 35px; 
         color:black;
  }
  
  #homepageSlider{
- height:330px; 
- width:700px; 
- border: 2px solid black;
+
  }
  
 

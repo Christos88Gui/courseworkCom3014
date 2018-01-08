@@ -27,5 +27,6 @@ public interface PropertyRepository extends JpaRepository<Property, Long>{
     
         Property findOne(long id);
         
+        @Override
         List<Property> findAll();
 }

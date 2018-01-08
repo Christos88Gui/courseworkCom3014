@@ -6,6 +6,9 @@
 package courseworkCom3014.property;
 
 import java.io.Serializable;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.Month;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -35,6 +38,8 @@ public class Property implements Serializable {
     private double price;
     
     private String description;   
+    
+    private LocalDate posted_at;
 
     public Property() {
     }
@@ -47,6 +52,11 @@ public class Property implements Serializable {
         this.year_built = year_built;
         this.price = price;
         this.description = description;
+        
+        LocalDate now = LocalDate.now();
+        this.posted_at = LocalDate.of(now.getYear(), now.getMonth(), now.getDayOfMonth());
+        
+        
     }
     
     
@@ -78,6 +88,10 @@ public class Property implements Serializable {
         return description;
     }
 
+    public LocalDate getPosted_at() {
+        return posted_at;
+    } 
+    
     public void setId(Long id) {
         this.id = id;
     }
@@ -105,5 +119,10 @@ public class Property implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     } 
+    
+    public void setPosted_at(LocalDate posted_at) {
+        this.posted_at = posted_at;
+    }
+
     
 }
