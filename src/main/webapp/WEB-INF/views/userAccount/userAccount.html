@@ -7,12 +7,7 @@
     <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
     <script src="../../../resources/js/jquery.min.js" th:src="@{/resources/js/jquery.min.js}"></script>
     <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
-    <style>
-        p{
-            font-size:18px;
-        }
-   
-    </style>
+
 </head>
 <body>
 <div th:replace="fragments/layout :: header"></div>
@@ -21,13 +16,10 @@
 <br><br><br><br>
 <div class="container homepageContainer" >
     <h2>Your Account</h3><br><br>
-    
-    <th:block>
-    <p style="position:relative" th:text="'Email: ' + ${account.email}" />   
-    <p style="position:relative" th:text="'Firstname: ' + ${account.firstname}" />  
-    <p style="position:relative" th:text="'Lastname: ' + ${account.lastname}" />       
-    </th:block>
-    
+    <p class="userDetails" th:text="'Email: ' + ${account.email}" />   
+    <p class="userDetails" th:text="'Firstname: ' + ${account.firstname}" />  
+    <p class="userDetails" th:text="'Lastname: ' + ${account.lastname}" />       
+        
 </div>
 
 <div th:replace="fragments/layout :: footer"></div>

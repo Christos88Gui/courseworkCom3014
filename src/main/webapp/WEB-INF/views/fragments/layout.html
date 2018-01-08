@@ -7,8 +7,8 @@
 
 
 <!-- Header -->
-<div class="navbar navbar-inverse navbar-fixed-top" th:fragment="header" style="background-color: black">
-    <img src="resources/images/LOGO.png"   style="height: 55px; width:480px; top:105px; left:30px; position:absolute; border:2px solid black; border-radius:14px; background-color:graytext">
+<div class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">
+    <img src="resources/images/LOGO.png" id="logo">
     <div class="container">       
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -18,17 +18,17 @@
                         Home
                     </a>
                 </li>
-                <li th:classappend="${module == 'about' ? 'active' : ''}" style="position: relative;">
+                <li th:classappend="${module == 'about' ? 'active' : ''}">
                     <a href="#about" th:href="@{/about}" class="navbarTab">
                         About
                     </a>
                 </li>
-                <li>
+                <li th:classappend="${module == 'about' ? 'active' : ''}">
                    <a href="#userAccount" th:href="@{/userAccount}" class="navbarTab">
                        My Account
                     </a>                 
                 </li>
-                <li>
+                <li th:classappend="${module == 'properties' ? 'active' : ''}">
                    <a href="#properties" th:href="@{/properties}" class="navbarTab">
                        All Properties
                     </a>                 
@@ -51,7 +51,7 @@
                 <li th:if="${#authorization.expression('isAuthenticated()')}">
                     <a href="/logout" th:href="@{#}" onclick="$('#form').submit();" class="navbarTab">
                         Logout
-                    </a>
+                    </a> 
                     <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
                 </li>
             </ul>
@@ -59,12 +59,8 @@
     </div>
 </div>
 
-<div class="container" style="float: right">
-    
-</div>
-
 <!-- Footer -->
-<div th:fragment="footer" style="background-color: black">
+<div th:fragment="footer">
  &copy;&nbsp;<span th:text="${#temporals.format(#temporals.createNow(), 'yyyy')}">2017</span>
     Demo project <span th:text="${@environment.getProperty('app.version')}"></span>
 </div>
