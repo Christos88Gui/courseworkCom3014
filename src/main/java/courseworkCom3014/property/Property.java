@@ -31,11 +31,13 @@ public class Property implements Serializable {
     
     private String postcode;
     
+    private String property_type;
+    
     private int square_meters;
     
     private int year_built;
     
-    private double price;
+    private int price;
     
     private String description;   
     
@@ -45,20 +47,28 @@ public class Property implements Serializable {
     }
    
     
-    public Property(String address, String postcode, int square_meters, int year_built, double price, String description) {        
+    public Property(String address, String postcode, int square_meters, int year_built, int price, String description, String property_type) {        
         this.address = address;
         this.postcode = postcode;
         this.square_meters = square_meters;
         this.year_built = year_built;
         this.price = price;
         this.description = description;
+        this.property_type = property_type;
         
         LocalDate now = LocalDate.now();
         this.posted_at = LocalDate.of(now.getYear(), now.getMonth(), now.getDayOfMonth());
         
         
     }
-    
+
+    public String getProperty_type() {
+        return property_type;
+    }
+
+    public void setProperty_type(String property_type) {
+        this.property_type = property_type;
+    }
     
     public Long getId() {
         return id;
@@ -80,7 +90,7 @@ public class Property implements Serializable {
         return year_built;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
@@ -112,7 +122,7 @@ public class Property implements Serializable {
         this.year_built = year_built;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

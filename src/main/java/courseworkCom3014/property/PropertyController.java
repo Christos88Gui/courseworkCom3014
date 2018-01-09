@@ -19,19 +19,46 @@ import org.springframework.web.bind.annotation.*;
 public class PropertyController {
 
 @Autowired
-	private PropertyRepository propertyRepository;
+	private PropertyService propertyService;
     
 
-    @GetMapping("/properties")    
-    String properties(ModelMap model) {       
+    @GetMapping("/selectedProperties")    
+    String selectedProperties(ModelMap model, String property_type, int min_price, int max_price) {       
+       
+        List<Property> properties = propertyService.findAll();
+        if(property_type != "null"){
+            for(int i=0;i<properties.size();i++){
+                if (properties.get(i).getProperty_type() != property_type){
+                    properties.remove(properties.get(i));
+                }
+            }
+        }
+        
+        if(min_price != 0){
+            for(int i=0;i<properties.size();i++){
+                if (properties.get(i).getPrice() < min_price){
+                    properties.remove(properties.get(i));
+                }
+            }
+        }
+        
+        if(max_price != 0){
+            for(int i=0;i<properties.size();i++){
+                if (properties.get(i).getPrice() > max_price){
+                    properties.remove(properties.get(i));
+                }
+            }
+        }
+        
+        
+        model.addAttribute("properties", properties);
+        return "properties/properties";   
+    }
 
-//        List<Property> properties = null;
-//        for(long i=0;i<propertyRepository.count();i++)
-//        {
-//            properties.add(propertyRepository.findOne(i));
-//        }
-//        
-        List<Property> properties = propertyRepository.findAll();
+    @GetMapping("/properties")    
+    String allProperties(ModelMap model) {       
+       
+        List<Property> properties = propertyService.findAll();
         model.addAttribute("properties", properties);
         return "properties/properties";   
     }

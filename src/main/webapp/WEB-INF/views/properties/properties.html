@@ -24,16 +24,17 @@
 <br><br>
 <h1>All Properties</h1><br><br>
 <th:block th:each="property : ${properties}">
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                    <div class="container propertyContainer" style="width:auto; background:white"> 
                        <br>
                         <img class="propertyImage" src="resources/images/img.jpg">
 
+                        <p class="propertyDetails" th:text="'Property Type: ' + ${property.property_type}" />
                         <p class="propertyDetails" th:text="'Address: ' + ${property.address}" />
                         <p class="propertyDetails" th:text="'Postcode: ' + ${property.postcode}" />
                         <p class="propertyDetails" th:text="'Square meters: ' + ${property.square_meters}" />
                         <p class="propertyDetails" th:text="'Year built: ' + ${property.year_built}" />
-                        <p class="propertyDetails" th:text="'Price: ' + ${property.price}" />
+                        <p class="propertyDetails" th:text="'Price ($): ' + ${property.price}" />
                         <p class="propertyDetails" th:text="'Posted at: ' + ${property.posted_at}" />
                         
                         <a href="#" style="font-size:19px; color:blue;">Click here for more details</a>

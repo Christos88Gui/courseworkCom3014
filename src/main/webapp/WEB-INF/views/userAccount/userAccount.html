@@ -13,8 +13,8 @@
 <div th:replace="fragments/layout :: header"></div>
 <img id="img" src="https://upload.wikimedia.org/wikipedia/commons/f/f1/04082013_-_Venice_Beach_-_L.A._California_%289591344501%29.jpg">
 
-<br><br><br><br>
-<div class="container homepageContainer" >
+<br><br><br><br><br><br><br><br><br>
+<div class="container accountContainer">
     <h2>Your Account</h3><br><br>
     <p class="userDetails" th:text="'Email: ' + ${account.email}" />   
     <p class="userDetails" th:text="'Firstname: ' + ${account.firstname}" />  
@@ -24,4 +24,16 @@
 
 <div th:replace="fragments/layout :: footer"></div>
 </body>
+
+<style>
+    .accountContainer{
+         height:auto;    
+    width:auto;
+    outline: 2px solid black;
+    text-align:center;
+    background-color:rgba(255, 255, 255, 0.9);    
+    position:relative;             
+   
+    }
+</style>
 </html>
