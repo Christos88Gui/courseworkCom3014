@@ -21,9 +21,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PropertyRepository extends JpaRepository<Property, Long>{
     
-    Property findByPostcode(String postcode);
+        Property findByPostcode(String postcode);
 	@Query("select count(a) > 0 from Property a where a.postcode = :postcode")
 	boolean exists(@Param("postcode") String postcode);
+     
+        @Query(
+        value = "SELECT * FROM Property t where t.property_type = :property_type", 
+        nativeQuery=true
+        )
+        public List<Property> findByPropertyType(@Param("property_type") String property_type);
     
         Property findOne(long id);
         

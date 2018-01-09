@@ -53,6 +53,12 @@ public class PropertyService {
                 save(new Property("637 Washington Street, Palm Desert", "CA 90234",  410, 2009,1840000, "Welcome", "Apartment"));
 	}
         
+        public List<Property> findByPropertyType(String property_type)
+        {
+            List<Property> properties = propertyRepository.findByPropertyType(property_type);
+            return properties;
+        }
+        
         @Transactional
 	public Property save(Property property) {
 		propertyRepository.save(property);

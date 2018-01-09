@@ -29,7 +29,7 @@
                     </a>                 
                 </li>
                 <li th:classappend="${module == 'properties' ? 'active' : ''}">
-                   <a href="#properties" th:href="@{/properties}" class="navbarTab">
+                   <a href="#properties" th:href="@{/properties(property_type='Apartment', min_price=0, max_price=0)}" class="navbarTab">
                        All Properties
                     </a>                 
                 </li>
