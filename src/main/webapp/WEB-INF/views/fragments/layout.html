@@ -60,7 +60,7 @@
 </div>
 
 <!-- Footer -->
-<div th:fragment="footer">
+<div th:fragment="footer" style="">
  &copy;&nbsp;<span th:text="${#temporals.format(#temporals.createNow(), 'yyyy')}">2017</span>
     Demo project <span th:text="${@environment.getProperty('app.version')}"></span>
 </div>

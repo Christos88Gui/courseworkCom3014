@@ -24,8 +24,12 @@ public class PropertyController {
     @GetMapping("/properties")    
     String allProperties(ModelMap model, String property_type, int min_price, int max_price) {       
        
-        List<Property> properties = propertyService.findByPropertyType(property_type);
-                
+        List<Property> properties = propertyService.findAll();
+        
+        if(properties.size() == 0){
+            return "properties/properties"; 
+        }
+        
         model.addAttribute("properties", properties);
         return "properties/properties";   
     }
