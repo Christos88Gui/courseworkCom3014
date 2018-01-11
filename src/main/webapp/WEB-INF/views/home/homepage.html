@@ -15,13 +15,14 @@
     
 <img id="img" src="https://upload.wikimedia.org/wikipedia/commons/f/f1/04082013_-_Venice_Beach_-_L.A._California_%289591344501%29.jpg">
 
-            <div class="container homepageSearchContainer" id="navigation" style="width:600px">
+            <div class="container homepageSearchContainer" id="navigation">
                 <form class="homepageForm" th:action="@{/filter}">
                     <h2>Filter By:</h2>
                     <br>
                     <div class="form-group">
                         <label for="PropertyType">Property Type</label>
                         <select class="form-control" name = "property_type">
+                            <option th:if="${property_type != null}" style="display:none " th:value="${property_type}" th:text="${property_type}"></option>
                             <option value="Not specified">Not specified</option>
                             <option value="Office">Office</option>
                             <option value="House / Villa">House / Villa</option>
@@ -33,6 +34,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <select class="homepageMinPriceDropdown form-control" name="min_price" onchange="minChange()">
+                                    <option th:if="${min_price != null}" style="display:none" th:value="${min_price}" th:text="${min_price}"></option>
                                     <option value="0">NO MIN</option>
                                     <option value="250000">250000</option>
                                     <option value="500000">500000</option>
@@ -41,7 +43,8 @@
                                     <option value="2000000">2000000</option>
                                     
                                 </select>
-                                <select class="homepageMaxPriceDropdown form-control" name = "max_price" onchange="maxChange()">
+                                <select class="homepageMaxPriceDropdown form-control" name ="max_price" onchange="maxChange()">
+                                    <option th:if="${max_price != null}" style="display:none" th:value="${max_price}" th:text="${max_price}"></option>
                                     <option value="0">NO MAX</option>
                                     <option value="1000000">1000000</option>
                                     <option value="1500000">1500000</option>
@@ -78,13 +81,11 @@
 
 <div class="row">
     <br><br><br><br><br><br>
-    <div class="col-lg-4">
-
-    </div> 
+    <div class="col-lg-3"></div>
     
-    <div class="col-lg-8">
+    <div class="container" style="float:right; width:60%">
         <th:block th:each="property : ${properties}">
-            <div class="col-lg-12">
+            
                    <div class="container homepagePropertiesContainer"> 
                        <br>
                         <img class="propertyImageSmall" src="resources/images/img.jpg">
@@ -101,30 +102,14 @@
                         
                     </div>
                 <br>
-            </div>
+          
      </th:block>
-            <br>
     </div>
         
-        </div>
-
-
-
-
-
-<script>
-function myFunction() {
-    var x = document.getElementById("mySelect").value;
-    var props = document.getElementsByClassName('props');
-    
-    for (var i=0; i<props.length; i++){
-        if(props[i].getAttribute('type') == x){
-            props[i].style.visibility = "hidden";
-        }
+            <br>
+   
         
-    }
-}
-</script>
+        </div>
 </body>
 
 

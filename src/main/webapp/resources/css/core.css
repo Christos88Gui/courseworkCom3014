@@ -12,7 +12,8 @@ body {
 }
 
 .homepageSearchContainer{        
-    height:auto;    
+    height:75%;    
+    width:35%;
     font-size:15px;
     border: 2px solid black;
     border-radius:17px;
@@ -25,11 +26,11 @@ body {
 
 .homepagePropertiesContainer {
     height:335px;   
-    width:1000px;
+    width:100%;
     background:white;
     font-size:15px;
     border: 1px solid black;
-    border-radius:17px;
+    
     color:black; 
     position:relative;
 }
@@ -46,10 +47,10 @@ body {
 
 .propertyImageSmall{
     float:right; 
-    width:530px; 
+    width:55%; 
     height:270px; 
     border:2px solid black;
-    border-radius:17px;
+    
 }
 
  .customHeader{
@@ -81,7 +82,7 @@ body {
  
  #homepageSlider{
 width:80%;
-height:270px;
+height:30%;
 border:2px solid black;
 margin: 0 auto;
 display:block;

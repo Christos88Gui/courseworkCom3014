@@ -10,6 +10,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.core.SpringVersion;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -28,12 +30,13 @@ class HomeController {
 	}
         
         @GetMapping("/")    
-        String properties(ModelMap model) {       
+        String properties(ModelMap model) {              
         List<Property> properties = propertyService.findAll();
-        if(properties.size() == 0){
+        if(properties.isEmpty()){
             return "home/homepage"; 
         }
-                
+       
+        
         Collections.sort(properties, new Comparator<Property>() {
           public int compare(Property o1, Property o2) {
           return o1.getPosted_at().compareTo(o2.getPosted_at());
@@ -43,11 +46,14 @@ class HomeController {
         return "home/homepage";   
     }
         
+       
         @GetMapping("/filter")    
-        String filter(ModelMap model, String property_type, int min_price, int max_price) {       
+        String filter(ModelMap model, String property_type, int min_price, int max_price) {     
+
             List<Property> properties = propertyService.findAll();
              
             if(!(property_type.equals("Not specified"))){
+                model.addAttribute("property_type",property_type);
                 Iterator<Property> iter = properties.iterator();
                 while (iter.hasNext()) {
                     Property property = iter.next();
@@ -59,6 +65,7 @@ class HomeController {
             }
             
             if(min_price != 0){
+                model.addAttribute("min_price",min_price);
                 Iterator<Property> iter = properties.iterator();
                 while (iter.hasNext()) {
                     Property property = iter.next();
@@ -70,6 +77,7 @@ class HomeController {
             }
             
             if(max_price != 0){
+                model.addAttribute("max_price",max_price);
                 Iterator<Property> iter = properties.iterator();
                 while (iter.hasNext()) {
                     Property property = iter.next();
@@ -79,6 +87,7 @@ class HomeController {
                     }
                 }
             }
+        
         model.addAttribute("properties", properties);
         return "home/homepage"; 
     }

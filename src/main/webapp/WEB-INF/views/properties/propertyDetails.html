@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{view.index.title}">Welcome!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <script src="../../../resources/js/jquery.min.js" th:src="@{/resources/js/jquery.min.js}"></script>
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/layout :: header"></div>
+<img id="img" src="https://upload.wikimedia.org/wikipedia/commons/f/f1/04082013_-_Venice_Beach_-_L.A._California_%289591344501%29.jpg">
+
+
+<br><br><br> <br>
+                <p style="text-align:center;"><b>Want to sell your property ? <a href="#">Contact us</a> now!</b></p> 
+                <img id="homepageSlider" src="resources/images/1.1.jpg">  
+                
+                <br><br>
+                
+                <div style="margin: 0 auto; text-align: center">
+                    <button class="cstmBtn" onclick="displayPreviousImage()">
+                        <span class=" glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        </button>
+
+                        <button class="cstmBtn" onclick="displayNextImage()">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    </button> 
+                </div>
+                <br>
+                
+                         
+</body>
+
+<script>
+    function displayNextImage() {
+              x = (x === images.length - 1) ? 0 : x + 1;
+             document.getElementById("homepageSlider").src = images[x];
+          }
+
+          function displayPreviousImage() {
+              x = (x <= 0) ? images.length - 1 : x - 1;
+              document.getElementById("homepageSlider").src = images[x];
+          }
+
+          var images = [], x = -1;
+          images[0] = "resources/images/2.1.jpg";
+          images[1] = "resources/images/3.1.jpg";
+          images[2] = "resources/images/4.1.jpg";
+</script>
+</html>
