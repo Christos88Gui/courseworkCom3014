@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -47,7 +48,7 @@ public class Property implements Serializable {
     }
    
     
-    public Property(String address, String postcode, int square_meters, int year_built, int price, String description, String property_type) {        
+    public Property(String address, String postcode, int square_meters, int year_built, int price, String description, String property_type,LocalDate posted_at) {        
         this.address = address;
         this.postcode = postcode;
         this.square_meters = square_meters;
@@ -55,9 +56,7 @@ public class Property implements Serializable {
         this.price = price;
         this.description = description;
         this.property_type = property_type;
-        
-        LocalDate now = LocalDate.now();
-        this.posted_at = LocalDate.of(now.getYear(), now.getMonth(), now.getDayOfMonth());
+        this.posted_at = posted_at;
         
         
     }
@@ -134,5 +133,4 @@ public class Property implements Serializable {
         this.posted_at = posted_at;
     }
 
-    
 }

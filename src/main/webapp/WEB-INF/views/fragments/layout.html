@@ -13,7 +13,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 
-                <li th:classappend="${module == 'home' ? 'active' : ''}">
+                <li th:classappend="${module == 'home' ? 'active' : ''}" th:href="@{/properties(property_type='Not Specified', min_price=0, max_price=0)}">
                     <a href="#" th:href="@{/}" class="navbarTab">
                         Home
                     </a>
@@ -23,23 +23,17 @@
                         About
                     </a>
                 </li>
-                <li th:classappend="${module == 'userAccount' ? 'active' : ''}">
-                   <a href="#userAccount" th:href="@{/userAccount}" class="navbarTab">
-                       My Account
-                    </a>                 
-                </li>
                 <li th:classappend="${module == 'properties' ? 'active' : ''}">
                    <a href="#properties" th:href="@{/properties(property_type='Apartment', min_price=0, max_price=0)}" class="navbarTab">
                        All Properties
                     </a>                 
                 </li>
-
             </ul>
           
             <ul class="nav navbar-nav navbar-right">
                 <li th:if="${#authorization.expression('!isAuthenticated()')}">
                     <a href="/signin" th:href="@{/signin}" class="navbarTab">
-                        Sign In
+                        Log In
                     </a>                    
                 </li>
                 <li th:if="${#authorization.expression('!isAuthenticated()')}">
@@ -49,22 +43,28 @@
                 </li>
                    
                 <li th:if="${#authorization.expression('isAuthenticated()')}">
+                   <a href="#userAccount" th:href="@{/userAccount}" class="navbarTab">
+                       My Account
+                    </a>                 
+                </li>
+                <li th:if="${#authorization.expression('isAuthenticated()')}">
                     <a href="/logout" th:href="@{#}" onclick="$('#form').submit();" class="navbarTab">
                         Logout
                     </a> 
                     <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
                 </li>
+                
             </ul>
         </div>
     </div>
 </div>
 
-<!-- Footer -->
-<div th:fragment="footer" style="">
- &copy;&nbsp;<span th:text="${#temporals.format(#temporals.createNow(), 'yyyy')}">2017</span>
-    Demo project <span th:text="${@environment.getProperty('app.version')}"></span>
-</div>
-
+<style>
+    li{
+        position:relative;
+        top:6px;
+    }
+</style>
 </body>
 </html>
 
