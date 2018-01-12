@@ -97,6 +97,7 @@
                         <p class="propertyDetails" th:text="'Square meters: ' + ${property.square_meters}" />
                         <p class="propertyDetails" th:text="'Year built: ' + ${property.year_built}" />
                         <p class="propertyDetails" th:text="'Posted at: ' + ${property.posted_at}" />
+                        <h4 class="propertyDetails" th:text="'Image path: ' + ${property.image_path}"></h4>
                         <br>
                         <a th:href="@{/propertyDetails(id=${property.id})}" style="font-size:19px; color:blue;">Click here for more details</a>
                         

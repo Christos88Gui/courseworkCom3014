@@ -10,7 +10,8 @@
 <div class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">
     <img src="resources/images/LOGO.png" id="logo">
     <div class="container">       
-        <div class="navbar-collapse collapse">
+        <div class="navbar-collapse collapse" >
+            <p style="visibility: hidden"></p>
             <ul class="nav navbar-nav">
                 
                 <li th:classappend="${module == 'home' ? 'active' : ''}">
@@ -23,9 +24,9 @@
                         About
                     </a>
                 </li>
-                <li th:classappend="${module == 'properties' ? 'active' : ''}">
-                   <a href="#properties" th:href="@{/properties(property_type='Apartment', min_price=0, max_price=0)}" class="navbarTab">
-                       All Properties
+                <li th:classappend="${module == 'contact' ? 'active' : ''}">
+                   <a href="#contact" th:href="@{/contact}" class="navbarTab">
+                       Contact Us
                     </a>                 
                 </li>
             </ul>

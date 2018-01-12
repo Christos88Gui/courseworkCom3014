@@ -25,7 +25,6 @@ import javax.persistence.Table;
 public class Property implements Serializable {
     
     @Id
-    @GeneratedValue
     private Long id;
 
     private String address;
@@ -43,12 +42,15 @@ public class Property implements Serializable {
     private String description;   
     
     private LocalDate posted_at;
+    
+    private String image_path;
 
     public Property() {
     }
    
     
-    public Property(String address, String postcode, int square_meters, int year_built, int price, String description, String property_type,LocalDate posted_at) {        
+    public Property(long id, String address, String postcode, int square_meters, int year_built, int price, String description, String property_type,LocalDate posted_at) {        
+        this.id = id;
         this.address = address;
         this.postcode = postcode;
         this.square_meters = square_meters;
@@ -57,10 +59,18 @@ public class Property implements Serializable {
         this.description = description;
         this.property_type = property_type;
         this.posted_at = posted_at;
-        
-        
+        this.image_path = "resources/images/" + Long.toString(id);
+    }
+   
+    public String getImage_path() {
+        return image_path;
     }
 
+    public void setImage_path(String image_path) {
+        this.image_path = image_path;
+    }
+
+        
     public String getProperty_type() {
         return property_type;
     }
