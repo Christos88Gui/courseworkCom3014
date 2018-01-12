@@ -30,19 +30,7 @@ public interface PropertyRepository extends JpaRepository<Property, Long>{
         nativeQuery=true
         )
         public List<Property> findByPropertyType(@Param("property_type") String property_type);
-    
-        @Query(
-        value = "SELECT * FROM Property t where t.property_type = :property_type AND t.price > :min_price", 
-        nativeQuery=true
-        )
-        public List<Property> find2(String property_type, int min_price);
-        
-        @Query(
-        value = "SELECT * FROM Property t where t.property_type = :property_type AND t.price > :min_price AND t.price < :max_price", 
-        nativeQuery=true
-        )
-        public List<Property> find3(String property_type, int min_price, int max_price);
-        
+
         Property findOne(long id);
         
         @Override

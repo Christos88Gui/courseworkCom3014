@@ -56,6 +56,10 @@ public class PropertyService {
             return properties;
         }
         
+        public Property findOne(long id){
+        return propertyRepository.findOne(id);
+        }
+        
         @Transactional
 	public Property save(Property property) {
 		propertyRepository.save(property);

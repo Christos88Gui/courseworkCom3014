@@ -35,8 +35,6 @@ class HomeController {
         if(properties.isEmpty()){
             return "home/homepage"; 
         }
-       
-        
         Collections.sort(properties, new Comparator<Property>() {
           public int compare(Property o1, Property o2) {
           return o1.getPosted_at().compareTo(o2.getPosted_at());

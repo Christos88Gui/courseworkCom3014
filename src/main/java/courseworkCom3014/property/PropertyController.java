@@ -23,4 +23,13 @@ public class PropertyController {
 @Autowired
 	private PropertyService propertyService;
 
+
+@GetMapping("/propertyDetails")
+public String propertyDetails(ModelMap model,long id){
+    Property property = propertyService.findOne(id);
+    model.addAttribute("property", property); 
+    
+return "properties/propertyDetails";
+}
+
 }

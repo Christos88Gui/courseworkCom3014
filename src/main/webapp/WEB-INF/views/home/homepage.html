@@ -61,7 +61,7 @@
             
                 <br><br><br> <br>
                 <p style="text-align:center;"><b>Want to sell your property ? <a href="#">Contact us</a> now!</b></p> 
-                <img id="homepageSlider" src="resources/images/1.1.jpg">  
+                <img id="homepageSlider" src="resources/images/sold1.jpg">  
                 
                 <br><br>
                 
@@ -92,13 +92,13 @@
 
                         <h3 class="propertyDetails" th:text="${property.property_type}" />
                         
-                        <h3 class="propertyDetails" th:text="'Price($): ' + ${property.price}" />
+                        <h3 class="propertyDetails" th:text="'Sale price: ' + ${property.price} + ' $'" />
                         <br>
                         <p class="propertyDetails" th:text="'Square meters: ' + ${property.square_meters}" />
                         <p class="propertyDetails" th:text="'Year built: ' + ${property.year_built}" />
                         <p class="propertyDetails" th:text="'Posted at: ' + ${property.posted_at}" />
                         <br>
-                        <a href="#" style="font-size:19px; color:blue;">Click here for more details</a>
+                        <a th:href="@{/propertyDetails(id=${property.id})}" style="font-size:19px; color:blue;">Click here for more details</a>
                         
                     </div>
                 <br>
@@ -143,11 +143,10 @@
           }
 
           var images = [], x = -1;
-          images[0] = "resources/images/2.1.jpg";
-          images[1] = "resources/images/3.1.jpg";
-          images[2] = "resources/images/4.1.jpg";
-               
-          
+          images[0] = "resources/images/sold2.jpg";
+          images[1] = "resources/images/sold3.jpg";
+          images[2] = "resources/images/sold4.jpg";
+     
       </script>
       
      
