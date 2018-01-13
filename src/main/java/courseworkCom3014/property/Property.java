@@ -49,17 +49,17 @@ public class Property implements Serializable {
     }
    
     
-    public Property(long id, String address, String postcode, int square_meters, int year_built, int price, String description, String property_type,LocalDate posted_at) {        
+    public Property(long id, String address, String postcode, int square_meters, int year_built, int price, String property_type,LocalDate posted_at,String description) {        
         this.id = id;
         this.address = address;
         this.postcode = postcode;
         this.square_meters = square_meters;
         this.year_built = year_built;
         this.price = price;
-        this.description = description;
         this.property_type = property_type;
         this.posted_at = posted_at;
-        this.image_path = "resources/images/" + Long.toString(id);
+        this.image_path = "resources/images/propertiesForSale/" + Long.toString(id);
+        this.description = description;
     }
    
     public String getImage_path() {

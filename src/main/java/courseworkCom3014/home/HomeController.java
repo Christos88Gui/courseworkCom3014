@@ -40,7 +40,13 @@ class HomeController {
           return o1.getPosted_at().compareTo(o2.getPosted_at());
           }
         });        
-        model.addAttribute("properties", properties.subList(0, 10));
+        if(properties.size() > 10){
+            model.addAttribute("properties", properties.subList(0, 10));
+        }
+        else{
+            model.addAttribute("properties", properties);
+        }
+        
         return "home/homepage";   
     }
         

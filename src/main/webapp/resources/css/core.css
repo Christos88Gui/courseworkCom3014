@@ -6,11 +6,37 @@ body {
     font-family: 'Verdana';
 }
 
+.hiddenElement{
+   visibility:hidden;
+}
+
+.undisplayedElement{
+   display:none;
+   visibility:hidden;
+}
+
+/*.container{
+    width:100%
+}*/
+
+.centeredElement{
+    margin: 0 auto; text-align: center; position:relative;
+}
 
 .alert{
     border:1px solid red;    
 }
 
+.accountContainer{
+    height:auto;    
+    width:100%;
+    outline: 2px solid black;
+    text-align:center;
+    background-color:rgba(255, 255, 255, 0.9);    
+    position:relative;             
+   
+    }
+    
 .homepageSearchContainer{        
     height:75%;    
     width:35%;
@@ -23,24 +49,12 @@ body {
     left:30px;
 }
 
-.homepagePropertiesContainer {
-    height:335px;   
-    width:100%;
-    background:white;
-    font-size:15px;
-    border: 1px solid black;
-    
-    color:black; 
-    position:relative;
-}
-
 .generalUseContainer{        
-    height:auto;
-    font-size:15px;
-    border: 2px solid black;
-    color:black; 
-    background-color:rgba(255,255,255,0.8);    
-    position: relative;
+ height:auto;   
+    width:95%;
+    background:rgba(255,255,255,0.8);
+    border: 1px solid black;
+    position:relative;
 }
 
 .propertyImageSmall{
@@ -95,7 +109,6 @@ position: relative;
         display:block;
         position: relative;
         float:left;
-
  }
  
  a{
@@ -115,7 +128,7 @@ position: relative;
 
         
 .cstmBtn, .cstmBtn:hover,.cstmBtn:active, .cstmBtn:after {
-            font-size: 20px;
+            font-size: 25px;
             background-color: transparent;
             border:none;
             position: relative;

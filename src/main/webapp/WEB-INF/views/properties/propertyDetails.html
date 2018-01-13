@@ -8,16 +8,7 @@
     <script src="../../../resources/js/jquery.min.js" th:src="@{/resources/js/jquery.min.js}"></script>
     <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
 </head>
-<script  th:inline="javascript">
-    window.onload = function() {
-       var propertyId = document.getElementById('propertyId').innerText;
-       if(localStorage.getItem(propertyId) == "sent" ){
-           document.getElementById('detailsBtn').innerText = "Details Sent!";
-           document.getElementById('detailsBtn').disabled = true; 
-           
-        }
-    }
-</script>
+
 <body>
 <div th:replace="fragments/layout :: header"></div>
 <img id="img" src="https://upload.wikimedia.org/wikipedia/commons/f/f1/04082013_-_Venice_Beach_-_L.A._California_%289591344501%29.jpg">
@@ -25,15 +16,18 @@
 
 <br><br><br><br><br><br><br><br>
                 <div class='container generalUseContainer'>
-                <br>    
+                <br>  
                 
                 <div class="row">
-                    <div class="col-lg-5">
+                    <div class="col-lg-7">
+                        <br>
                         <div class='container' style="width:100%">
-                            <img id="detailsSlider" th:src="${property.image_path} + '.1.jpg'">  
-
-                            <div style=" text-align: center; position: relative; top:10px; ">
-
+                            <p id='image_path' class='undisplayedElement' th:text='${property.image_path}'></p>
+                            <img id="detailsSlider" th:src="${property.image_path} + '/1.jpg'">                              
+                        </div>
+                        <div class='container' style="width:100%">
+                            <div class="centeredElement">
+                                <br><br>
                                 <button class="cstmBtn" onclick="displayPreviousImage()">
                                     <span class=" glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                                     </button>
@@ -42,68 +36,34 @@
                                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                                 </button> 
                             </div> 
-                            <br>  
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class='container' style="max-width: 350px; float:left">
-                        
-                        <h3 id="h3" style='font-weight: bold' th:text="'Sale price: ' + ${property.price} + ' $'"></h3>
+                    <div class="col-lg-5">
+                        <div class='container' style="width:100%">
+                        <b><h3 th:text="'Sale price: ' + ${property.price} + ' $'"></h3></b>
                         <br>
+                        <h4 id="propertyId" th:text="${property.id}" style="display: none"></h4>
                         <h4 th:text="'Address: ' + ${property.address}"></h4>
                         <h4 th:text="'Postcode: ' + ${property.postcode}"></h4> 
                         <h4 th:text="'Type: ' + ${property.property_type}"></h4>  
-                        <h4 th:text="'Square meters: ' + ${property.square_meters} + '.1.jpg'"></h4>
-                        <h4 th:text="'Image path: ' + ${property.image_path} + '.1.jpg'"></h4>
-                        <h4 id="propertyId" th:text="${property.id}" style="display: none"></h4>
+                        <h4 th:text="'Square meters: ' + ${property.square_meters}"></h4>
+                        <h4 th:text="'Built: ' + ${property.year_built}"></h4>
+                        <h4 th:text="'Posted: ' + ${property.posted_at}"></h4>
+                        <h4 th:text="'Description:'"></h4><p th:text='${property.description}'></p>
                         <br>
-                        <p>Want to let the landlord know you're interested? Send them your contact details!</p>
                         <button type='button' class="btn btn-lg btn-danger" id="detailsBtn" onclick="sendDetails()">Send my details</button>
+                        <p style='font-size:13px'>Want to let the landlord know you're interested? Send them your contact details!</p>
                         
-                            <br>
+                        <br>
+                        <br>
                         </div>
                     </div>
                     
-                    <div class="col-lg-3">
-                        <div class='container' style="float:left">
-                            <h3 style='font-weight: bold'>Description</h3>
-                            <br>
-                            <h4 th:text="${property.description}"></h4> 
-                        </div>
-                    </div>
+                  
                 </div>           
-            </div>                                          
+            </div>  
+
+<script th:src="@{/resources/js/propertyDetails.js}"></script>
 </body>
-
-<script>
-    
-    
-    function sendDetails(){
-        
-        var r = confirm("Your details will be sent to the landlord of the property.\n\nAre you sure you want to proceed?");
-            if (r == true) {
-                document.getElementById('detailsBtn').innerText = "Details Sent!";
-                document.getElementById('detailsBtn').disabled = true;   
-                var propertyId = document.getElementById('propertyId').innerText;
-                localStorage.setItem(propertyId, 'sent');
-                window.alert("Your details were sent successfully! \n\nThe landlord will contact you soon",5);
-            } 
-       }
-    
-    function displayNextImage() {
-              x = (x === images.length - 1) ? 0 : x + 1;
-             document.getElementById("detailsSlider").src = images[x];
-          }
-
-          function displayPreviousImage() {
-              x = (x <= 0) ? images.length - 1 : x - 1;
-              document.getElementById("detailsSlider").src = images[x];
-          }
-
-          var images = [], x = -1;
-          images[0] = "resources/images/2.1.jpg";
-          images[1] = "resources/images/3.1.jpg";
-          images[2] = "resources/images/4.1.jpg";
-          
-</script>
 </html>
+

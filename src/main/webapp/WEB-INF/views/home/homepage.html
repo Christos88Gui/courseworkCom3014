@@ -22,7 +22,7 @@
                     <div class="form-group">
                         <label for="PropertyType">Property Type</label>
                         <select class="form-control" name = "property_type">
-                            <option th:if="${property_type != null}" style="display:none " th:value="${property_type}" th:text="${property_type}"></option>
+                            <option th:if="${property_type != null}" class="undisplayedElement" th:value="${property_type}" th:text="${property_type}"></option>
                             <option value="Not specified">Not specified</option>
                             <option value="Office">Office</option>
                             <option value="House / Villa">House / Villa</option>
@@ -34,7 +34,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <select class="homepageMinPriceDropdown form-control" name="min_price" onchange="minChange()">
-                                    <option th:if="${min_price != null}" style="display:none" th:value="${min_price}" th:text="${min_price}"></option>
+                                    <option th:if="${min_price != null}" class="undisplayedElement" th:value="${min_price}" th:text="${min_price}"></option>
                                     <option value="0">NO MIN</option>
                                     <option value="250000">250000</option>
                                     <option value="500000">500000</option>
@@ -44,7 +44,7 @@
                                     
                                 </select>
                                 <select class="homepageMaxPriceDropdown form-control" name ="max_price" onchange="maxChange()">
-                                    <option th:if="${max_price != null}" style="display:none" th:value="${max_price}" th:text="${max_price}"></option>
+                                    <option th:if="${max_price != null}" class="undisplayedElement" th:value="${max_price}" th:text="${max_price}"></option>
                                     <option value="0">NO MAX</option>
                                     <option value="1000000">1000000</option>
                                     <option value="1500000">1500000</option>
@@ -59,13 +59,14 @@
                 <button class="btn btn-default homepageSearchbtn" type="submit">Search</button>
             </form>
             
-                <br><br><br> <br>
-                <p style="text-align:center;"><b>Want to sell your property ? <a href="#">Contact us</a> now!</b></p> 
-                <img id="homepageSlider" src="resources/images/sold1.jpg">  
+                <br><br><br><br>
+                <p class="centeredElement"><b>Want to sell your property ? <a href="${contact}">Contact us</a> now!</b></p> 
+                <br>
+                <img id="homepageSlider" src="resources/images/propertiesSold/sold1.jpg">  
                 
                 <br><br>
                 
-                <div style="margin: 0 auto; text-align: center">
+                <div class="centeredElement">
                     <button class="cstmBtn" onclick="displayPreviousImage()">
                         <span class=" glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                         </button>
@@ -80,74 +81,33 @@
     
 
 <div class="row">
-    <br><br><br><br><br><br>
-    <div class="col-lg-3"></div>
     
+    <br><br><br><br><br><br>
+        
     <div class="container" style="float:right; width:60%">
         <th:block th:each="property : ${properties}">
             
-                   <div class="container homepagePropertiesContainer"> 
+                   <div class="container generalUseContainer"> 
                        <br>
-                        <img class="propertyImageSmall" src="resources/images/img.jpg">
+                        <img class="propertyImageSmall" th:src="${property.image_path} + '/1.jpg'">
 
-                        <h3 class="propertyDetails" th:text="${property.property_type}" />
+                        <h3 th:text="${property.property_type}" />
                         
-                        <h3 class="propertyDetails" th:text="'Sale price: ' + ${property.price} + ' $'" />
+                        <h3 th:text="'Sale price: ' + ${property.price} + ' $'" />
                         <br>
-                        <p class="propertyDetails" th:text="'Square meters: ' + ${property.square_meters}" />
-                        <p class="propertyDetails" th:text="'Year built: ' + ${property.year_built}" />
-                        <p class="propertyDetails" th:text="'Posted at: ' + ${property.posted_at}" />
-                        <h4 class="propertyDetails" th:text="'Image path: ' + ${property.image_path}"></h4>
+                        <p th:text="'Square meters: ' + ${property.square_meters}" />
+                        <p th:text="'Year built: ' + ${property.year_built}" />
+                        <p th:text="'Posted at: ' + ${property.posted_at}" />
                         <br>
                         <a th:href="@{/propertyDetails(id=${property.id})}" style="font-size:19px; color:blue;">Click here for more details</a>
-                        
+                        <br><br><br>
                     </div>
                 <br>
           
      </th:block>
     </div>
-        
-            <br>
-   
-        
-        </div>
+</div>
+<script th:src="@{/resources/js/homepage.js}"></script>
 </body>
-
-
-<script th:inline="javascript" type="text/javascript">
-    /* Fill in modal with content loaded with Ajax */
-    $(document).ready(function () {
-        $('#signup').on('click', function () {
-            $("#signup-modal").modal();
-            $("#signup-modal-body").text("");
-            $.ajax({
-                url: "signup",
-                cache: false
-            }).done(function (html) {
-                $("#signup-modal-body").append(html);
-            });
-        });
-    });
-
-          function displayNextImage() {
-              x = (x === images.length - 1) ? 0 : x + 1;
-             document.getElementById("homepageSlider").src = images[x];
-          }
-
-          function displayPreviousImage() {
-              x = (x <= 0) ? images.length - 1 : x - 1;
-              document.getElementById("homepageSlider").src = images[x];
-          }
-
-          function startTimer() {
-              setInterval(displayNextImage, 4000);
-          }
-
-          var images = [], x = -1;
-          images[0] = "resources/images/sold2.jpg";
-          images[1] = "resources/images/sold3.jpg";
-          images[2] = "resources/images/sold4.jpg";
-     
-      </script>
-      
+</html>
      

@@ -8,10 +8,10 @@
 
 <!-- Header -->
 <div class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">
-    <img src="resources/images/LOGO.png" id="logo">
+    <img src="resources/images/generalImages/LOGO.png" id="logo">
     <div class="container">       
         <div class="navbar-collapse collapse" >
-            <p style="visibility: hidden"></p>
+            <p class="hiddenElement"></p>
             <ul class="nav navbar-nav">
                 
                 <li th:classappend="${module == 'home' ? 'active' : ''}">
@@ -52,20 +52,13 @@
                     <a href="/logout" th:href="@{#}" onclick="$('#form').submit();" class="navbarTab">
                         Logout
                     </a> 
-                    <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
+                    <form class="hiddenElement" id="form" method="post" action="#" th:action="@{/logout}"></form>
                 </li>
                 
             </ul>
         </div>
     </div>
 </div>
-
-<style>
-    li{
-        position:relative;
-        top:6px;
-    }
-</style>
 </body>
 </html>
 
