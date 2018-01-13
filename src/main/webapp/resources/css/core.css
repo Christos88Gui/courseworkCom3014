@@ -1,31 +1,54 @@
 body {
     padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
     padding-bottom: 40px;
-    background-color: black;
-    background-repeat: no-repeat;
-    font-family: 'Verdana';
-}
+    background-color: black;   
+    font-family: 'Verdana'; 
+    background: url("../images/generalImages/spiti.JPG") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+} 
 
-.hiddenElement{
-   visibility:hidden;
-}
 
-.undisplayedElement{
-   display:none;
-   visibility:hidden;
-}
+ /*------------ CUSTOM ID'S ------------*/
+ #logo{
+     height: 55px;
+     width:480px; 
+     top:105px; 
+     left:30px; 
+     position:absolute; 
+     border:2px solid black;
+     border-radius:14px;
+     background-color:graytext
+ }
+ 
+ #homepageSlider{
+    width:80%;
+    height:30%;
+    border:2px solid black;
+    margin: 0 auto;
+    display:block;
+    position: relative;
+ }
 
-/*.container{
-    width:100%
-}*/
+#detailsSlider{
+    width:100%;
+    height:350px;
+    border:2px solid black;
+    display:block;
+    position: relative;
+    float:left;
+ }
 
-.centeredElement{
-    margin: 0 auto; text-align: center; position:relative;
-}
+#img{
+            background-size:cover;
+            position:absolute; width:100%; height:100%;
+            
+            background-repeat:repeat;
+        }
 
-.alert{
-    border:1px solid red;    
-}
+/*------------ CUSTOM CONTAINERS ------------*/
 
 .accountContainer{
     height:auto;    
@@ -43,74 +66,22 @@ body {
     font-size:15px;
     border: 2px solid black;
     color:black; 
-    background-color:rgba(255,255,255,0.8);    
+    background-color:rgba(255,255,255,0.9);    
     position:fixed;
     top:180px; 
     left:30px;
 }
 
-.generalUseContainer{        
- height:auto;   
+.generalUseContainer{ 
+    height:auto;   
     width:95%;
-    background:rgba(255,255,255,0.8);
-    border: 1px solid black;
+    background:rgba(255,255,255,0.9);
+    border: 2px solid black;
     position:relative;
 }
 
-.propertyImageSmall{
-    float:right; 
-    width:55%; 
-    height:270px; 
-    border:2px solid black;
-    
-}
+/*------------ OTHER CUSTOM CLASSES ------------*/
 
- .customHeader{
-        position:relative; 
-        font-size: 35px; 
-        color:black;
-    }
-        
-        .userDetails
-        {
-            font-size: 18px;
-            
-        }
- 
-        .formHeader{
-            text-align:center; font-size: 25px;
-        }
-        
- #logo{
-     height: 55px;
-     width:480px; 
-     top:105px; 
-     left:30px; 
-     position:absolute; 
-     border:2px solid black;
-     border-radius:14px;
-     background-color:graytext
- }
- 
- #homepageSlider{
-width:80%;
-height:30%;
-border:2px solid black;
-margin: 0 auto;
-display:block;
-position: relative;
-
- }
-
-  #detailsSlider{
-        width:100%;
-        height:350px;
-        border:2px solid black;
-        display:block;
-        position: relative;
-        float:left;
- }
- 
  a{
      color:blue;
  }
@@ -119,20 +90,37 @@ position: relative;
      font-size:16px;
  } 
 
-#img{
-            background-size:cover;
-            position:absolute; width:100%; height:100%;
-            
-            background-repeat:repeat;
-        }
-
-        
 .cstmBtn, .cstmBtn:hover,.cstmBtn:active, .cstmBtn:after {
-            font-size: 25px;
-            background-color: transparent;
-            border:none;
-            position: relative;
-            }
+    font-size: 25px;
+    background-color: transparent;
+    border:none;
+    outline:none;
+    position: relative;
+}
+
+.hiddenElement{
+   visibility:hidden;
+}
+
+.undisplayedElement{
+   display:none;
+   visibility:hidden;
+}
+
+.centeredElement{
+    margin: 0 auto; text-align: center; position:relative;
+}
+
+.propertyImageSmall{
+    float:right; 
+    width:55%; 
+    height:270px; 
+    border:2px solid black;   
+}
+
+.formHeader{
+    text-align:center; font-size: 25px;
+}
 
 .form-control{
     border: 1px solid black;
@@ -160,17 +148,11 @@ position: relative;
     font-size: 25px;
 }
 
-.li:hover{
-    
-    
-}
-
 @media screen and (max-width: 960px) {
     .homepageContainer {
         /*width: 300px;*/
     }
 }
-
 
 .homepageForm > .form-group > .form-control{
     border: 1px solid black;
@@ -210,9 +192,6 @@ position: relative;
 
     /* Supports Grid */
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-auto-rows: minmax(150px, auto);
-    grid-gap: 1em;
 }
 
 .module {
@@ -230,10 +209,6 @@ position: relative;
 
 }
 
-/* If Grid is supported, remove the margin we set for the fallback */
-/*@supports (display: grid) {
-    .module {
-        margin: 20px;
-
-    }
-}*/
+.alert{
+    border:1px solid red;    
+}

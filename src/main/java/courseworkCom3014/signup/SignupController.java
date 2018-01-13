@@ -20,6 +20,11 @@ class SignupController {
 	@Autowired
 	private AccountService accountService;
 
+        @ModelAttribute("module")
+        String module() {
+            return "signup";
+        }
+        
 	@GetMapping("signup")
 	String signup(Model model, @RequestHeader(value = "X-Requested-With", required = false) String requestedWith) {
 		model.addAttribute(new SignupForm());
@@ -36,7 +41,7 @@ class SignupController {
 		}
 		Account account = accountService.save(signupForm.createAccount());
 		accountService.signin(account);
-        // see /WEB-INF/i18n/messages.properties and /WEB-INF/views/homeSignedIn.html
+        
         MessageHelper.addSuccessAttribute(ra, "signup.success");
 		return "redirect:/";
 	}

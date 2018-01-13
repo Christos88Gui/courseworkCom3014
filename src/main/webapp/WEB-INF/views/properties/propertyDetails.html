@@ -10,58 +10,54 @@
 </head>
 
 <body>
-<div th:replace="fragments/layout :: header"></div>
-<img id="img" src="https://upload.wikimedia.org/wikipedia/commons/f/f1/04082013_-_Venice_Beach_-_L.A._California_%289591344501%29.jpg">
+    <div th:replace="fragments/layout :: header"></div>
 
+    <br><br><br><br><br><br><br><br>
+    <div class='container generalUseContainer'>
+        <br>  
 
-<br><br><br><br><br><br><br><br>
-                <div class='container generalUseContainer'>
-                <br>  
-                
-                <div class="row">
-                    <div class="col-lg-7">
-                        <br>
-                        <div class='container' style="width:100%">
-                            <p id='image_path' class='undisplayedElement' th:text='${property.image_path}'></p>
-                            <img id="detailsSlider" th:src="${property.image_path} + '/1.jpg'">                              
-                        </div>
-                        <div class='container' style="width:100%">
-                            <div class="centeredElement">
-                                <br><br>
-                                <button class="cstmBtn" onclick="displayPreviousImage()">
-                                    <span class=" glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                    </button>
+        <div class="row">
+            <div class="col-lg-7">
+                <br>
+                <div class='container' style="width:100%">
+                    <p id='image_path' class='undisplayedElement' th:text='${property.image_path}'></p>
+                    <img id="detailsSlider" th:src="${property.image_path} + '/1.jpg'">                              
+                </div>
+                <div class='container' style="width:100%">
+                    <div class="centeredElement">
+                        <br><br>
+                        <button class="cstmBtn" onclick="displayPreviousImage()">
+                            <span class=" glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                            </button>
 
-                                    <button class="cstmBtn" onclick="displayNextImage()">
-                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                </button> 
-                            </div> 
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class='container' style="width:100%">
-                        <b><h3 th:text="'Sale price: ' + ${property.price} + ' $'"></h3></b>
-                        <br>
-                        <h4 id="propertyId" th:text="${property.id}" style="display: none"></h4>
-                        <h4 th:text="'Address: ' + ${property.address}"></h4>
-                        <h4 th:text="'Postcode: ' + ${property.postcode}"></h4> 
-                        <h4 th:text="'Type: ' + ${property.property_type}"></h4>  
-                        <h4 th:text="'Square meters: ' + ${property.square_meters}"></h4>
-                        <h4 th:text="'Built: ' + ${property.year_built}"></h4>
-                        <h4 th:text="'Posted: ' + ${property.posted_at}"></h4>
-                        <h4 th:text="'Description:'"></h4><p th:text='${property.description}'></p>
-                        <br>
-                        <button type='button' class="btn btn-lg btn-danger" id="detailsBtn" onclick="sendDetails()">Send my details</button>
-                        <p style='font-size:13px'>Want to let the landlord know you're interested? Send them your contact details!</p>
-                        
-                        <br>
-                        <br>
-                        </div>
-                    </div>
-                    
-                  
-                </div>           
-            </div>  
+                            <button class="cstmBtn" onclick="displayNextImage()">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                        </button> 
+                    </div> 
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class='container' style="width:100%">
+                <b><h3 th:text="'Sale price: ' + ${property.price} + ' $'"></h3></b>
+                <br>
+                <h4 id="propertyId" th:text="${property.id}" style="display: none"></h4>
+                <h4 th:text="'Address: ' + ${property.address}"></h4>
+                <h4 th:text="'Postcode: ' + ${property.postcode}"></h4> 
+                <h4 th:text="'Type: ' + ${property.property_type}"></h4>  
+                <h4 th:text="'Square meters: ' + ${property.square_meters}"></h4>
+                <h4 th:text="'Built: ' + ${property.year_built}"></h4>
+                <h4 th:text="'Posted: ' + ${property.posted_at}"></h4>
+                <h4 th:text="'Description:'"></h4><p th:text='${property.description}'></p>
+                <br>
+                <button type='button' class="btn btn-lg btn-danger" id="detailsBtn" onclick="sendDetails()">Send my details</button>
+                <p style='font-size:13px'>Want to let the landlord know you're interested? Send them your contact details!</p>
+
+                <br>
+                <br>
+                </div>
+            </div>
+        </div>           
+    </div>  
 
 <script th:src="@{/resources/js/propertyDetails.js}"></script>
 </body>

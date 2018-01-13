@@ -6,43 +6,40 @@
     <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
     <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
 </head>
+
 <body>
-    
-<div th:replace="fragments/layout :: header"></div>
-<img id="img" src="https://upload.wikimedia.org/wikipedia/commons/f/f1/04082013_-_Venice_Beach_-_L.A._California_%289591344501%29.jpg">
+    <div th:replace="fragments/layout :: header"></div>
 
-<br><br><br><br><br><br><br><br>
-<div class="container generalUseContainer" style="width:600px">
-<form class="form-narrow form-horizontal" method="post" th:action="@{/authenticate}">
-    <th:block th:if="${param.error != null}">
-        <div th:replace="fragments/components :: alert (type='danger', message='Sign in error. Please try again.')">Alert</div>
-    </th:block>
-    <br>
-        <p class="formHeader">Please Log In</p>
-    <br>
-        <div class="form-group">
-            <label class="control-label">Email</label><br>
-            <input type="text" class="form-control" id="inputEmail" placeholder="Email" name="username" />
-        </div>
-        <div class="form-group">
-            <label for="inputPassword" class="control-label">Password</label><br>
-            <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password" />
-        </div>
-        <div class="form-group">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="_spring_security_remember_me" /> Remember me
-                </label>
-            </div>  
-        </div>
-        <br>
-        <div class="form-group">
-            <button type="submit" class="btn btn-default">Log in</button>
-            <p style="float:right">New here? <a href="signup" th:href="@{/signup}">Sign Up</a></p>
-        </div>
-          
-</form>    
-</div>
-
+    <br><br><br><br><br><br><br><br>
+    <div class="container generalUseContainer" style="width:600px">
+        <form class="form-narrow form-horizontal" method="post" th:action="@{/authenticate}">
+            <th:block th:if="${param.error != null}">
+                <div th:replace="fragments/components :: alert (type='danger', message='Sign in error. Please try again.')">Alert</div>
+            </th:block>
+            <br>
+            <p class="formHeader">Please Log In</p>
+            <br>
+            <div class="form-group">
+                <label class="control-label">Email</label><br>
+                <input type="text" class="form-control" id="inputEmail" placeholder="Email" name="username" />
+            </div>
+            <div class="form-group">
+                <label for="inputPassword" class="control-label">Password</label><br>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password" />
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="_spring_security_remember_me" /> Remember me
+                    </label>
+                </div>  
+            </div>
+            <br>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Log in</button>
+                <p style="float:right">New here? <a href="signup" th:href="@{/signup}">Sign Up</a></p>
+            </div>        
+        </form>    
+    </div>
 </body>
 </html>

@@ -5,15 +5,14 @@
 </head>
 <body>
 
-
 <!-- Header -->
 <div class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">
+    
     <img src="resources/images/generalImages/LOGO.png" id="logo">
     <div class="container">       
         <div class="navbar-collapse collapse" >
             <p class="hiddenElement"></p>
-            <ul class="nav navbar-nav">
-                
+            <ul class="nav navbar-nav">               
                 <li th:classappend="${module == 'home' ? 'active' : ''}">
                     <a href="#" th:href="@{/}" class="navbarTab">
                         Home
@@ -32,19 +31,19 @@
             </ul>
           
             <ul class="nav navbar-nav navbar-right">
-                <li th:if="${#authorization.expression('!isAuthenticated()')}">
+                <li th:if="${#authorization.expression('!isAuthenticated()')}" th:classappend="${module == 'signin' ? 'active' : ''}">
                     <a href="/signin" th:href="@{/signin}" class="navbarTab">
                         Log In
                     </a>                    
                 </li>
-                <li th:if="${#authorization.expression('!isAuthenticated()')}">
+                <li th:if="${#authorization.expression('!isAuthenticated()')}" th:classappend="${module == 'signup' ? 'active' : ''}">
                    <a href="/signup" th:href="@{/signup}" class="navbarTab">
                         Sign Up
                     </a>                 
                 </li>
                    
-                <li th:if="${#authorization.expression('isAuthenticated()')}">
-                   <a href="#userAccount" th:href="@{/userAccount}" class="navbarTab">
+                <li th:if="${#authorization.expression('isAuthenticated()')}" th:classappend="${module == 'account' ? 'active' : ''}">
+                   <a href="#userAccount" th:href="@{/myAccount}" class="navbarTab">
                        My Account
                     </a>                 
                 </li>

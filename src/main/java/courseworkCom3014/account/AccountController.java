@@ -1,12 +1,12 @@
 package courseworkCom3014.account;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.security.Principal;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
-
-import java.security.Principal;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class AccountController {
@@ -17,6 +17,11 @@ public class AccountController {
         this.accountRepository = accountRepository;
     }
 
+    @ModelAttribute("module")
+    String module() {
+        return "account";
+    }
+    
     @GetMapping("account/current")
     @ResponseStatus(value = HttpStatus.OK)
     @Secured({"ROLE_USER", "ROLE_ADMIN"})
@@ -31,5 +36,14 @@ public class AccountController {
     public Account account(@PathVariable("id") Long id) {
         return accountRepository.findOne(id);
     }
-   
+    
+    
+    @GetMapping("/myAccount")
+    public ModelAndView myAccount(ModelMap model, Principal principal) {                 
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("account/myAccount");
+        Account account = accountRepository.findOneByEmail(principal.getName());     
+        modelAndView.addObject("account",account);
+        return modelAndView;
+    }
 }

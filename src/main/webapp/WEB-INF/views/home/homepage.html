@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Home</title>
+    <title th:text="#{homepage.title}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
     <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
@@ -12,101 +12,93 @@
 <body onload="startTimer()">
     <div th:replace="fragments/layout :: header">
     </div>
-    
-<img id="img" src="https://upload.wikimedia.org/wikipedia/commons/f/f1/04082013_-_Venice_Beach_-_L.A._California_%289591344501%29.jpg">
 
-            <div class="container homepageSearchContainer" id="navigation">
-                <form class="homepageForm" th:action="@{/filter}">
-                    <h2>Filter By:</h2>
-                    <br>
-                    <div class="form-group">
-                        <label for="PropertyType">Property Type</label>
-                        <select class="form-control" name = "property_type">
-                            <option th:if="${property_type != null}" class="undisplayedElement" th:value="${property_type}" th:text="${property_type}"></option>
-                            <option value="Not specified">Not specified</option>
-                            <option value="Office">Office</option>
-                            <option value="House / Villa">House / Villa</option>
-                            <option value="Apartment">Apartment</option>
+    <div class="container homepageSearchContainer" id="navigation">
+        <form class="homepageForm" th:action="@{/filter}">
+            <h2>Filter By:</h2>
+            <br>
+            <div class="form-group">
+                <label for="PropertyType">Property Type</label>
+                <select class="form-control" name = "property_type">
+                    <option th:if="${property_type != null}" class="undisplayedElement" th:value="${property_type}" th:text="${property_type}"></option>
+                    <option value="Not specified">Not specified</option>
+                    <option value="Office">Office</option>
+                    <option value="House / Villa">House / Villa</option>
+                    <option value="Apartment">Apartment</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Price ($) Min - Max</label>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <select class="homepageMinPriceDropdown form-control" name="min_price" onchange="minChange()">
+                            <option th:if="${min_price != null}" class="undisplayedElement" th:value="${min_price}" th:text="${min_price}"></option>
+                            <option value="0">NO MIN</option>
+                            <option value="250000">250000</option>
+                            <option value="500000">500000</option>
+                            <option value="1000000">1000000</option>
+                            <option value="1500000">1500000</option>
+                            <option value="2000000">2000000</option>
+                        </select>
+                        <select class="homepageMaxPriceDropdown form-control" name ="max_price" onchange="maxChange()">
+                            <option th:if="${max_price != null}" class="undisplayedElement" th:value="${max_price}" th:text="${max_price}"></option>
+                            <option value="0">NO MAX</option>
+                            <option value="1000000">1000000</option>
+                            <option value="1500000">1500000</option>
+                            <option value="2000000">2000000</option>
+                            <option value="4000000">4000000</option>
+                            <option value="6000000">6000000</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>Price ($) Min - Max</label>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <select class="homepageMinPriceDropdown form-control" name="min_price" onchange="minChange()">
-                                    <option th:if="${min_price != null}" class="undisplayedElement" th:value="${min_price}" th:text="${min_price}"></option>
-                                    <option value="0">NO MIN</option>
-                                    <option value="250000">250000</option>
-                                    <option value="500000">500000</option>
-                                    <option value="1000000">1000000</option>
-                                    <option value="1500000">1500000</option>
-                                    <option value="2000000">2000000</option>
-                                    
-                                </select>
-                                <select class="homepageMaxPriceDropdown form-control" name ="max_price" onchange="maxChange()">
-                                    <option th:if="${max_price != null}" class="undisplayedElement" th:value="${max_price}" th:text="${max_price}"></option>
-                                    <option value="0">NO MAX</option>
-                                    <option value="1000000">1000000</option>
-                                    <option value="1500000">1500000</option>
-                                    <option value="2000000">2000000</option>
-                                    <option value="4000000">4000000</option>
-                                    <option value="6000000">6000000</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                <br>
-                <button class="btn btn-default homepageSearchbtn" type="submit">Search</button>
-            </form>
-            
-                <br><br><br><br>
-                <p class="centeredElement"><b>Want to sell your property ? <a href="${contact}">Contact us</a> now!</b></p> 
-                <br>
-                <img id="homepageSlider" src="resources/images/propertiesSold/sold1.jpg">  
-                
-                <br><br>
-                
-                <div class="centeredElement">
-                    <button class="cstmBtn" onclick="displayPreviousImage()">
-                        <span class=" glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                        </button>
-
-                        <button class="cstmBtn" onclick="displayNextImage()">
-                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    </button> 
                 </div>
-                <br>
             </div>
-            
-    
+            <br>
+            <button class="btn btn-default homepageSearchbtn" type="submit">Search</button>
+        </form>
 
-<div class="row">
-    
-    <br><br><br><br><br><br>
-        
-    <div class="container" style="float:right; width:60%">
-        <th:block th:each="property : ${properties}">
-            
-                   <div class="container generalUseContainer"> 
-                       <br>
-                        <img class="propertyImageSmall" th:src="${property.image_path} + '/1.jpg'">
+        <br><br><br><br>
+        <p class="centeredElement"><b>Want to sell your property ? <a href="${contact}">Contact us</a> now!</b></p> 
+        <br>
+        <img id="homepageSlider" src="resources/images/propertiesSold/sold1.jpg">  
 
-                        <h3 th:text="${property.property_type}" />
-                        
-                        <h3 th:text="'Sale price: ' + ${property.price} + ' $'" />
-                        <br>
-                        <p th:text="'Square meters: ' + ${property.square_meters}" />
-                        <p th:text="'Year built: ' + ${property.year_built}" />
-                        <p th:text="'Posted at: ' + ${property.posted_at}" />
-                        <br>
-                        <a th:href="@{/propertyDetails(id=${property.id})}" style="font-size:19px; color:blue;">Click here for more details</a>
-                        <br><br><br>
-                    </div>
-                <br>
-          
-     </th:block>
+        <br><br>
+
+        <div class="centeredElement">
+            <button class="cstmBtn" onclick="displayPreviousImage()">
+                <span class=" glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                </button>
+
+                <button class="cstmBtn" onclick="displayNextImage()">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            </button> 
+        </div>
+        <br>
     </div>
-</div>
+            
+    <div class="row">
+        <br><br><br><br><br><br>
+        <div class="container" style="float:right; width:60%">
+            <th:block th:each="property : ${properties}">
+
+                       <div class="container generalUseContainer"> 
+                           <br>
+                            <img class="propertyImageSmall" th:src="${property.image_path} + '/1.jpg'">
+
+                            <h3 th:text="${property.property_type}" />
+
+                            <h3 th:text="'Sale price: ' + ${property.price} + ' $'" />
+                            <br>
+                            <p th:text="'Square meters: ' + ${property.square_meters}" />
+                            <p th:text="'Year built: ' + ${property.year_built}" />
+                            <p th:text="'Posted at: ' + ${property.posted_at}" />
+                            <br>
+                            <a th:href="@{/propertyDetails(id=${property.id})}" style="font-size:19px; color:blue;">Click here for more details</a>
+                            <br><br><br>
+                        </div>
+                    <br>
+            </th:block>
+        </div>
+    </div>
 <script th:src="@{/resources/js/homepage.js}"></script>
 </body>
 </html>

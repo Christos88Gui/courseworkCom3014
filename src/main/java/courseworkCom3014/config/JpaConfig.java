@@ -1,10 +1,8 @@
 package courseworkCom3014.config;
 
 import java.util.Properties;
-
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
-
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.hibernate.cfg.Environment;
@@ -18,12 +16,8 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
 import org.springframework.util.ClassUtils;
-
 import courseworkCom3014.Application;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 @Configuration
 @EnableTransactionManagement
@@ -48,22 +42,8 @@ class JpaConfig {
     private String formatSql;
     @Value("${hibernate.use_sql_comments}")
     private String useSqlComments;
-//
-//    @Bean
-//    public DataSource dataSource() {
-//        HikariConfig config = new HikariConfig();
-//        config.setDriverClassName(driver);
-//        config.setJdbcUrl(url);
-//        config.setUsername(username);
-//        config.setPassword(password);
-//        config.addDataSourceProperty("cachePrepStmts", "true");
-//        config.addDataSourceProperty("prepStmtCacheSize", "250");
-//        config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
-//        config.addDataSourceProperty("useServerPrepStmts", "true");
-//
-//        return new HikariDataSource(config);
-//    }
-@Bean
+
+    @Bean
     public DataSource dataSource() {
         HikariConfig config = new HikariConfig();
         config.setDriverClassName(driver);
