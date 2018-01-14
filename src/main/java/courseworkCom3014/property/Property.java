@@ -42,9 +42,10 @@ public class Property implements Serializable {
         this.price = price;
         this.property_type = property_type;
         this.posted_at = posted_at;
-        this.image_path = "resources/images/propertiesForSale/" + Long.toString(id);
+        if(id<=9){this.image_path = "resources/images/propertiesForSale/" + Long.toString(id);}
+        else {this.image_path = "resources/images/propertiesForSale/default"; }
         this.description = description;
-    }
+    }    
    
     public String getImage_path() {
         return image_path;

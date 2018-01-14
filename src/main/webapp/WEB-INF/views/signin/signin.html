@@ -10,7 +10,6 @@
 <body>
     <div th:replace="fragments/layout :: header"></div>
 
-    <br><br><br><br><br><br><br><br>
     <div class="container generalUseContainer" id="signupContainer">
         <form class="form-narrow form-horizontal" method="post" th:action="@{/authenticate}">
             <th:block th:if="${param.error != null}">

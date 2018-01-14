@@ -51,6 +51,14 @@ public class PropertyService {
         return propertyRepository.findAll();
     }
 
+     /**
+    * Calls repository's function findAll(), finds and returns all properties. 
+    */
+    public long findMaxId(){
+        return propertyRepository.findMaxId();
+    }
+
+    
     /**
     * Generates and returns a random date within a range of a year from today. 
     */

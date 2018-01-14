@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{createProperty.title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <script src="../../../resources/js/jquery.min.js" th:src="@{/resources/js/jquery.min.js}"></script>
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+</head>
+<body>
+    <div th:replace="fragments/layout :: header"></div>
+   
+        <div class="container generalUseContainer" id="signupContainer">
+            <form class="form-narrow form-horizontal" method="post" th:action="@{/saveProperty}">
+                <th:block th:if="${param.error != null}">
+                    <div th:replace="fragments/components :: alert (type='danger', message='Something went wrong. Please try again.')">Alert</div>
+                </th:block>
+              
+                <h3 class="formHeader">Create new Property</h3>
+                
+                <div class="form-group">
+                <label for='inputAddress' class="control-label">Address</label><br>
+                <input type="text" class="form-control" id="inputAddress" placeholder="Address" name="address" />
+                </div>
+            
+                <div class="form-group">
+                    <label for="inputPostcode" class="control-label">Postcode</label><br>
+                    <input type="postcode" class="form-control" id="inputPostcode" placeholder="Postcode" name="postcode" />
+                </div>
+                
+                <div class="form-group">
+                    <label for="inputPropertyType" class="control-label">Property Type</label><br>
+                    <input type="text" class="form-control" id="inputPropertyType" placeholder="Property type" name="property_type" />
+                </div>
+
+                <div class="form-group">
+                    <label for="inputSquareMeters" class="control-label">Square Meters</label><br>
+                    <input type="number" class="form-control" id="inputSquareMeters" placeholder="Square Meters" name="square_meters" />
+                </div>
+    
+                <div class="form-group">
+                    <label for="inputYearBuilt" class="control-label">Year Built</label><br>
+                    <input type="number" class="form-control" id="inputYearBuilt" placeholder="Year Built" name="year_built" />
+                </div> 
+
+                <div class="form-group">
+                    <label for="inputPrice" class="control-label">Price</label><br>
+                    <input type="number" class="form-control" id="inputPrice" placeholder="Price" name="price" />
+                </div>
+            
+                <div class="form-group">
+                    <label for="inputDescription" class="control-label">Description</label><br>
+                    <input type="text" class="form-control" id="inputDescription" placeholder="Description" name="description" />
+                </div>
+            
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">Create</button>
+                </div>        
+            </form>    
+        </div>   
+</body>
+</html>

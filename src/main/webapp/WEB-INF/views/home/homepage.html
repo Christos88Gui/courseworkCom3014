@@ -56,49 +56,44 @@
             <button class="btn btn-default homepageSearchbtn" type="submit">Search</button>
         </form>
 
-        <br><br><br><br>
-        <p class="centeredElement"><b>Want to sell your property ? <a href="${contact}">Contact us</a> now!</b></p> 
-        <br>
-        <img id="homepageSlider" src="resources/images/propertiesSold/sold1.jpg">  
-
-        <br><br>
-
-        <div class="centeredElement">
-            <button class="cstmBtn" onclick="displayPreviousImage()">
+        <div style='position:relative; top: 70px;' class='centeredElement'>
+            <p style='left:70px; position:relative'><b>Want to sell your property ? <a th:href="@{/contact}">Contact us</a> </b></p> 
+            <br>
+            <img id="homepageSlider" src="resources/images/propertiesSold/sold1.jpg">  
+            <br>
+            <div>
+                <button class="cstmBtn" onclick="displayPreviousImage()">
                 <span class=" glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                 </button>
-
                 <button class="cstmBtn" onclick="displayNextImage()">
                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            </button> 
-        </div>
-        <br>
-    </div>
-            
-    <div class="row">
-        <br><br><br><br><br><br>
-        <div class="container" style="float:right; width:60%">
-            <th:block th:each="property : ${properties}">
-
-                       <div class="container generalUseContainer"> 
-                           <br>
-                            <img class="propertyImageSmall" th:src="${property.image_path} + '/1.jpg'">
-
-                            <h3 th:text="${property.property_type}" />
-
-                            <h3 th:text="'Sale price: ' + ${property.price} + ' $'" />
-                            <br>
-                            <p th:text="'Square meters: ' + ${property.square_meters}" />
-                            <p th:text="'Year built: ' + ${property.year_built}" />
-                            <p th:text="'Posted at: ' + ${property.posted_at}" />
-                            <br>
-                            <a th:href="@{/propertyDetails(id=${property.id})}" style="font-size:19px; color:blue;">Click here for more details</a>
-                            <br><br><br>
-                        </div>
-                    <br>
-            </th:block>
+                </button> 
+            </div>
+            <br>
         </div>
     </div>
+    
+    <div class="container propertiesOuterContainer">
+        <th:block th:each="property : ${properties}">
+
+                   <div class="container generalUseContainer propertiesInnerContainer"> 
+                       
+                        <img class="propertyImageSmall" th:src="${property.image_path} + '/1.jpg'">
+
+                        <h3 th:text="${property.property_type}" />
+
+                        <h3 th:text="'Sale price: ' + ${property.price} + ' $'" />
+                        <br>
+                        <p th:text="'Square meters: ' + ${property.square_meters}" />
+                        <p th:text="'Year built: ' + ${property.year_built}" />
+                        <p th:text="'Posted at: ' + ${property.posted_at}" />                                                
+                       <br>
+                        <a th:href="@{/propertyDetails(id=${property.id})}" style="font-size:19px; color:blue;">Click here for more details</a>
+                        
+                    </div>
+                <br>
+        </th:block>
+    </div>   
 <script th:src="@{/resources/js/homepage.js}"></script>
 </body>
 </html>

@@ -12,10 +12,9 @@
 <body>
     <div th:replace="fragments/layout :: header"></div>
 
-    <br><br><br><br><br><br><br><br>
-    <div class='container generalUseContainer'>
-        <br>  
-
+    
+    <div class='container generalUseContainer' id='propertyDetailsContainer'>
+    <br>        
         <div class="row">
             <div class="col-lg-7">
                 <br>
@@ -47,14 +46,11 @@
                 <h4 th:text="'Square meters: ' + ${property.square_meters}"></h4>
                 <h4 th:text="'Built: ' + ${property.year_built}"></h4>
                 <h4 th:text="'Posted: ' + ${property.posted_at}"></h4>
-                <h4 th:text="'Description:'"></h4><p th:text='${property.description}'></p>
+                <h4 th:text="'Description:'"></h4><p  style='font-size:16px' th:text='${property.description}'></p>
                 <br>
                 <button type='button' class="btn btn-lg btn-danger" id="detailsBtn" onclick="sendDetails()">Send my details</button>
-                <p style='font-size:13px'>Want to let the landlord know you're interested? Send them your contact details!</p>
-
-                <br>
-                <br>
-                </div>
+                <p style='font-size:13px'>Want to let the landlord know you're interested? Send them your contact details!</p><br>
+                </div>                
             </div>
         </div>           
     </div>  
