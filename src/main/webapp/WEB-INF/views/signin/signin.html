@@ -11,13 +11,13 @@
     <div th:replace="fragments/layout :: header"></div>
 
     <br><br><br><br><br><br><br><br>
-    <div class="container generalUseContainer" style="width:600px">
+    <div class="container generalUseContainer" id="signupContainer">
         <form class="form-narrow form-horizontal" method="post" th:action="@{/authenticate}">
             <th:block th:if="${param.error != null}">
                 <div th:replace="fragments/components :: alert (type='danger', message='Sign in error. Please try again.')">Alert</div>
             </th:block>
             <br>
-            <p class="formHeader">Please Log In</p>
+            <h3 class="formHeader">Please Log In</h3>
             <br>
             <div class="form-group">
                 <label class="control-label">Email</label><br>

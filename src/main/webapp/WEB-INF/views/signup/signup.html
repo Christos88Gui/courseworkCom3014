@@ -10,9 +10,8 @@
 </head>
 <body>
     <div th:replace="fragments/layout :: header"></div>
-
-    <br><br><br><br><br><br><br><br>
-    <div class="container generalUseContainer" style="width:600px">
+    
+    <div class="container generalUseContainer" id="signupContainer">
         <form class="form-narrow form-horizontal" method="post" th:action="@{/signup}" th:object="${signupForm}" th:fragment="signupForm">
             <!--/* Show general error message when form contains errors */-->
             <th:block th:if="${#fields.hasErrors('${signupForm.*}')}">

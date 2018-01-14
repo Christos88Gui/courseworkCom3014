@@ -18,73 +18,59 @@ class HomeController {
     @Autowired
     private PropertyService propertyService;
 
+    /**
+    * Sets the module attribute to 'home'.
+    */
     @ModelAttribute("module")
     String module() {
             return "home";
     }
 
-
+    /**
+    * Redirects to 'homepage' view and passes all properties sorted by the posted date as an attribute,
+    * If there are no properties in the repository, just redirects to 'homepage' view.
+    */
     @GetMapping("/")    
     String homepage(ModelMap model) {              
         List<Property> properties = propertyService.findAll();
+        //If there are no properties, redirects instantly.
         if(properties.isEmpty()){
             return "home/homepage"; 
         }
+        //Sorts the properties.
         Collections.sort(properties, (Property o1, Property o2) -> o1.getPosted_at().compareTo(o2.getPosted_at()));        
         model.addAttribute("properties", properties);
         return "home/homepage";   
     }
 
-
+    /**
+    * Collects all properties, then filters them based on user preferences,
+    * Redirects to 'homepage' view and passes the filtered properties as an attribute,
+    * If there are no properties in the repository, instantly redirects to 'homepage' view.
+    */
     @GetMapping("/filter")    
     String filter(ModelMap model, String property_type, int min_price, int max_price) {     
-        List<Property> properties = propertyService.findAll();  
+        List<Property> properties = propertyService.findAll(); 
+        // If properties is empty, instantly redirects to 'homepage' view.
+        if(properties.isEmpty()){
+            return "home/homepage"; 
+        }
+        // If the property type dropdown in home page is not default, filter properties by type.
         if(!(property_type.equals("Not specified"))){
             model.addAttribute("property_type",property_type);
-            properties = removeByPropertyType(properties, property_type);
+            properties = propertyService.removeByPropertyType(properties, property_type);
         }
+        // If the minimum price dropdown in home page is not default, filter properties by minimum price.
         if(min_price != 0){
             model.addAttribute("min_price",min_price);
-            properties = removeByMinPrice(properties, min_price);                
+            properties = propertyService.removeByMinPrice(properties, min_price);                
         }
+        // If the maximum price dropdown in home page is not default, filter properties by maximum price.
         if(max_price != 0){
             model.addAttribute("max_price",max_price);
-            properties = removeByMaxPrice(properties, max_price);  
+            properties = propertyService.removeByMaxPrice(properties, max_price);  
         }
         model.addAttribute("properties", properties);
         return "home/homepage"; 
-    }
-
-    public List<Property> removeByPropertyType(List<Property> properties, String property_type){
-        Iterator<Property> iter = properties.iterator();
-        while (iter.hasNext()) {
-            Property property = iter.next();
-            if (!(property.getProperty_type().equals(property_type))){
-            iter.remove();
-            }
-        }
-        return properties;
-    }
-
-    public List<Property> removeByMinPrice(List<Property> properties, int min_price){
-        Iterator<Property> iter = properties.iterator();
-        while (iter.hasNext()) {
-            Property property = iter.next();
-            if (property.getPrice() < min_price){
-            iter.remove();
-            }
-        }
-        return properties;
-    }
-
-    public List<Property> removeByMaxPrice(List<Property> properties, int max_price){
-        Iterator<Property> iter = properties.iterator();
-        while (iter.hasNext()) {
-            Property property = iter.next();
-            if (property.getPrice() > max_price){
-            iter.remove();
-            }
-        }
-        return properties;
-    }    
+    }  
 }

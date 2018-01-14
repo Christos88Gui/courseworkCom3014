@@ -11,13 +11,14 @@
 </head>
 <body>
     <div th:replace="fragments/layout :: header"></div>
-
-    <br><br><br><br><br><br><br><br><br>
-    <div class="container accountContainer">
+    
+    <div class="generalUseContainer container" id="userAccountContainer">
         <h2>Your Account</h3><br><br>
         <p th:text="'Email: ' + ${account.email}" />   
         <p th:text="'Firstname: ' + ${account.firstname}" />  
-        <p th:text="'Lastname: ' + ${account.lastname}" />       
+        <p th:text="'Lastname: ' + ${account.lastname}" />   
+        
+        <br><br>
     </div>
 </body>
 </html>

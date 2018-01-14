@@ -2,8 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
 </head>
-<body>
+
 
 <!-- Header -->
 <div class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">
@@ -40,8 +41,7 @@
                    <a href="/signup" th:href="@{/signup}" class="navbarTab">
                         Sign Up
                     </a>                 
-                </li>
-                   
+                </li>        
                 <li th:if="${#authorization.expression('isAuthenticated()')}" th:classappend="${module == 'account' ? 'active' : ''}">
                    <a href="#userAccount" th:href="@{/myAccount}" class="navbarTab">
                        My Account
@@ -53,7 +53,16 @@
                     </a> 
                     <form class="hiddenElement" id="form" method="post" action="#" th:action="@{/logout}"></form>
                 </li>
-                
+                 <li th:if="${#authorization.expression('isAuthenticated()')}">
+                    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{#}" class="dropdown-toggle navbarTab" id="adminButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       ADMIN OPTIONS <span class="glyphicon glyphicon-triangle-bottom"></span>
+                    </a>  
+                    <div class="dropdown-menu" aria-labelledby="adminButton">
+                        <a class='dropdown-item' href="#">Create Property</a><br>
+                        <a class='dropdown-item' href="#">Update Property</a><br>
+                        <a class='dropdown-item' href="#">Delete Property</a><br>
+                    </div>                                       
+                </li>
             </ul>
         </div>
     </div>

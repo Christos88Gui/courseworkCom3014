@@ -17,11 +17,17 @@ public class AccountController {
         this.accountRepository = accountRepository;
     }
 
+     /**
+     * Sets the module attribute to 'account'.
+     */
     @ModelAttribute("module")
     String module() {
         return "account";
     }
     
+    /**
+     * Returns the account that is currently logged.  
+     */
     @GetMapping("account/current")
     @ResponseStatus(value = HttpStatus.OK)
     @Secured({"ROLE_USER", "ROLE_ADMIN"})
@@ -30,6 +36,9 @@ public class AccountController {
         return accountRepository.findOneByEmail(principal.getName());
     }
 
+    /**
+     * Returns the account that is currently logged. 
+     */
     @GetMapping("account/{id}")
     @ResponseStatus(value = HttpStatus.OK)
     @Secured("ROLE_ADMIN")
@@ -37,7 +46,9 @@ public class AccountController {
         return accountRepository.findOne(id);
     }
     
-    
+    /**
+     * Redirects to 'account' view and passes it the current user's account as attribute.
+     */
     @GetMapping("/myAccount")
     public ModelAndView myAccount(ModelMap model, Principal principal) {                 
         ModelAndView modelAndView = new ModelAndView();
