@@ -1,4 +1,4 @@
-package courseworkCom3014.property;
+package courseworkCom3014.Model;
 
 import java.io.Serializable;
 import java.time.LocalDate;

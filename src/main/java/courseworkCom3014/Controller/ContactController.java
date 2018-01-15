@@ -1,4 +1,4 @@
-package courseworkCom3014.home;
+package courseworkCom3014.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;

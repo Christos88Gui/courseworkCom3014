@@ -1,7 +1,7 @@
-package courseworkCom3014.signup;
+package courseworkCom3014.support.web;
 
 import org.springframework.stereotype.Component;
-import courseworkCom3014.account.AccountRepository;
+import courseworkCom3014.Model.AccountRepository;
 import javax.validation.Constraint;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -15,7 +15,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({FIELD, ANNOTATION_TYPE})
 @Retention(RUNTIME)
-@Constraint(validatedBy = courseworkCom3014.signup.EmailExistsValidator.class)
+@Constraint(validatedBy = courseworkCom3014.support.web.EmailExistsValidator.class)
 @Documented
 public @interface EmailExists {
 
@@ -27,7 +27,7 @@ public @interface EmailExists {
 }
 
 @Component
-class EmailExistsValidator implements ConstraintValidator<courseworkCom3014.signup.EmailExists, String> {
+class EmailExistsValidator implements ConstraintValidator<courseworkCom3014.support.web.EmailExists, String> {
 
     private final AccountRepository accountRepository;
 
@@ -37,7 +37,7 @@ class EmailExistsValidator implements ConstraintValidator<courseworkCom3014.sign
 
 
     @Override
-    public void initialize(courseworkCom3014.signup.EmailExists constraintAnnotation) {
+    public void initialize(courseworkCom3014.support.web.EmailExists constraintAnnotation) {
 
     }
 

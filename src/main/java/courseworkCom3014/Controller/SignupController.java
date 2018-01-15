@@ -1,5 +1,7 @@
-package courseworkCom3014.signup;
+package courseworkCom3014.Controller;
 
+import courseworkCom3014.Service.AccountService;
+import courseworkCom3014.Model.Account;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import courseworkCom3014.account.*;
+import courseworkCom3014.Model.SignupForm;
 import courseworkCom3014.support.web.*;
 import org.springframework.web.servlet.ModelAndView;
 

@@ -1,5 +1,8 @@
 package courseworkCom3014.account;
 
+import courseworkCom3014.Service.AccountService;
+import courseworkCom3014.Model.AccountRepository;
+import courseworkCom3014.Model.Account;
 import java.time.Instant;
 import java.util.Date;
 import org.junit.Rule;
@@ -34,13 +37,6 @@ public class AccountServiceTest {
 	@Rule
 	public ExpectedException thrown = ExpectedException.none();
 
-	@Test
-	public void shouldInitializeWithTwoDemoUsers() {
-		// act
-		accountService.initialize();
-		// assert
-		verify(accountRepositoryMock, times(2)).save(any(Account.class));
-	}
 
 	@Test
 	public void shouldThrowExceptionWhenUserNotFound() {

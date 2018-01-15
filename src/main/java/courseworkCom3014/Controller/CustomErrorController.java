@@ -1,4 +1,4 @@
-package courseworkCom3014.error;
+package courseworkCom3014.Controller;
 
 import java.text.MessageFormat;
 import javax.servlet.http.HttpServletRequest;

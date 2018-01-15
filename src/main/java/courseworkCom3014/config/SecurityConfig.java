@@ -13,7 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
 
-import courseworkCom3014.account.AccountService;
+import courseworkCom3014.Service.AccountService;
 
 @Configuration
 @EnableWebSecurity

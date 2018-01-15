@@ -1,7 +1,8 @@
-package courseworkCom3014.signup;
+package courseworkCom3014.Model;
 
 import org.hibernate.validator.constraints.*;
-import courseworkCom3014.account.Account;
+import courseworkCom3014.Model.Account;
+import courseworkCom3014.support.web.EmailExists;
 
 public class SignupForm {
 

@@ -1,5 +1,7 @@
-package courseworkCom3014.property;
+package courseworkCom3014.Controller;
 
+import courseworkCom3014.Model.Property;
+import courseworkCom3014.Service.PropertyService;
 import java.time.LocalDate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

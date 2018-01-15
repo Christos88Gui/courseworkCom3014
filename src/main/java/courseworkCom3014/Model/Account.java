@@ -1,4 +1,4 @@
-package courseworkCom3014.account;
+package courseworkCom3014.Model;
 
 import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;

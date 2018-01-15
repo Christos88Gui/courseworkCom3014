@@ -1,4 +1,4 @@
-package courseworkCom3014.error;
+package courseworkCom3014.Controller;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.context.request.WebRequest;

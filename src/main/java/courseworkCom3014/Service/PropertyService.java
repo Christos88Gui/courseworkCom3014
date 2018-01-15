@@ -1,5 +1,7 @@
-package courseworkCom3014.property;
+package courseworkCom3014.Service;
 
+import courseworkCom3014.Model.PropertyRepository;
+import courseworkCom3014.Model.Property;
 import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.List;

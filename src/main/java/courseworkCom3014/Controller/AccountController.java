@@ -1,5 +1,7 @@
-package courseworkCom3014.account;
+package courseworkCom3014.Controller;
 
+import courseworkCom3014.Model.Account;
+import courseworkCom3014.Model.AccountRepository;
 import java.security.Principal;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;

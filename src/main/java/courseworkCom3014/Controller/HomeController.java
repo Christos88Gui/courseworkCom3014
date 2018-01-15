@@ -1,4 +1,4 @@
-package courseworkCom3014.home;
+package courseworkCom3014.Controller;
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -9,8 +9,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import courseworkCom3014.property.Property;
-import courseworkCom3014.property.PropertyService;
+import courseworkCom3014.Model.Property;
+import courseworkCom3014.Service.PropertyService;
 
 @Controller
 class HomeController {
