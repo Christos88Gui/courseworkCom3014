@@ -37,10 +37,10 @@ class HomeController {
         if(properties.isEmpty()){
             return "home/homepage"; 
         }
-        //Sorts the properties.
-        Collections.sort(properties, (Property o1, Property o2) -> o1.getPosted_at().compareTo(o2.getPosted_at()));        
+        //Sorts the properties based on posted date.
+        Collections.sort(properties, (Property o2, Property o1) -> o2.getPosted_at().compareTo(o1.getPosted_at()));
         model.addAttribute("properties", properties);
-        return "home/homepage";   
+        return "home/homepage";
     }
 
     /**

@@ -47,7 +47,6 @@ class SignupController {
         */
 	@PostMapping("signup")
 	String signup(@Valid @ModelAttribute SignupForm signupForm, Errors errors, RedirectAttributes ra) {
-                ModelAndView modelAndView = new ModelAndView();	
                 if (errors.hasErrors()) {
 			return SIGNUP_VIEW_NAME;
 		}

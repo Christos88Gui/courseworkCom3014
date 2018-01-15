@@ -28,10 +28,20 @@
                    <a href="#contact" th:href="@{/contact}" class="navbarTab">
                        Contact Us
                     </a>                 
-                </li>
+                </li>             
             </ul>
           
             <ul class="nav navbar-nav navbar-right">
+                <li th:if="${#authorization.expression('isAuthenticated()')}">
+                 <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{#}" class="dropdown-toggle navbarTab" id="adminButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    ADMIN OPTIONS <span class="glyphicon glyphicon-triangle-bottom"></span>
+                 </a>  
+                 <div class="dropdown-menu" aria-labelledby="adminButton">
+                     <a class='dropdown-item' th:href="@{/createPropertyPage}">Create Property</a><br>
+                     <a class='dropdown-item' th:href="@{/updatePropertyPage}">Update Property</a><br>
+                     <a class='dropdown-item' th:href="@{/deletePropertyPage}">Delete Property</a><br>
+                 </div>                                       
+                </li>
                 <li th:if="${#authorization.expression('!isAuthenticated()')}" th:classappend="${module == 'signin' ? 'active' : ''}">
                     <a href="/signin" th:href="@{/signin}" class="navbarTab">
                         Log In
@@ -52,17 +62,7 @@
                         Logout
                     </a> 
                     <form class="hiddenElement" id="form" method="post" action="#" th:action="@{/logout}"></form>
-                </li>
-                 <li th:if="${#authorization.expression('isAuthenticated()')}">
-                    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{#}" class="dropdown-toggle navbarTab" id="adminButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                       ADMIN OPTIONS <span class="glyphicon glyphicon-triangle-bottom"></span>
-                    </a>  
-                    <div class="dropdown-menu" aria-labelledby="adminButton">
-                        <a class='dropdown-item' th:href="@{/createProperty}">Create Property</a><br>
-                        <a class='dropdown-item' th:href="@{/updateProperty}">Update Property</a><br>
-                        <a class='dropdown-item' th:href="@{/deleteProperty}">Delete Property</a><br>
-                    </div>                                       
-                </li>
+                </li>                 
             </ul>
         </div>
     </div>

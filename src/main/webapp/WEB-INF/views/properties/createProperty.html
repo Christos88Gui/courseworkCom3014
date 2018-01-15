@@ -11,8 +11,8 @@
 <body>
     <div th:replace="fragments/layout :: header"></div>
    
-        <div class="container generalUseContainer" id="signupContainer">
-            <form class="form-narrow form-horizontal" method="post" th:action="@{/saveProperty}">
+        <div class="container generalUseContainer" id="createPropertyContainer">
+            <form class="form-narrow form-horizontal" method="post" th:action="@{/createProperty}">
                 <th:block th:if="${param.error != null}">
                     <div th:replace="fragments/components :: alert (type='danger', message='Something went wrong. Please try again.')">Alert</div>
                 </th:block>
@@ -20,23 +20,23 @@
                 <h3 class="formHeader">Create new Property</h3>
                 
                 <div class="form-group">
-                <label for='inputAddress' class="control-label">Address</label><br>
-                <input type="text" class="form-control" id="inputAddress" placeholder="Address" name="address" />
+                <label for='inputAddress' class="control-label">Address*</label><br>
+                <input required type="text" class="form-control" id="inputAddress" placeholder="Address" name="address" />
                 </div>
             
                 <div class="form-group">
-                    <label for="inputPostcode" class="control-label">Postcode</label><br>
-                    <input type="postcode" class="form-control" id="inputPostcode" placeholder="Postcode" name="postcode" />
+                    <label for="inputPostcode" class="control-label">Postcode*</label><br>
+                    <input minlength="5" required type="postcode" class="form-control" id="inputPostcode" placeholder="Postcode" name="postcode" />
                 </div>
                 
                 <div class="form-group">
-                    <label for="inputPropertyType" class="control-label">Property Type</label><br>
-                    <input type="text" class="form-control" id="inputPropertyType" placeholder="Property type" name="property_type" />
+                    <label for="inputPropertyType" class="control-label">Property Type*</label><br>
+                    <input required type="text" class="form-control" id="inputPropertyType" placeholder="Property type" name="property_type" />
                 </div>
 
                 <div class="form-group">
-                    <label for="inputSquareMeters" class="control-label">Square Meters</label><br>
-                    <input type="number" class="form-control" id="inputSquareMeters" placeholder="Square Meters" name="square_meters" />
+                    <label for="inputSquareMeters" class="control-label">Square Meters*</label><br>
+                    <input required type="number" class="form-control" id="inputSquareMeters" placeholder="Square Meters" name="square_meters" />
                 </div>
     
                 <div class="form-group">
@@ -45,13 +45,13 @@
                 </div> 
 
                 <div class="form-group">
-                    <label for="inputPrice" class="control-label">Price</label><br>
-                    <input type="number" class="form-control" id="inputPrice" placeholder="Price" name="price" />
+                    <label for="inputPrice" class="control-label">Price*</label><br>
+                    <input required type="number" class="form-control" id="inputPrice" placeholder="Price" name="price" />
                 </div>
             
                 <div class="form-group">
                     <label for="inputDescription" class="control-label">Description</label><br>
-                    <input type="text" class="form-control" id="inputDescription" placeholder="Description" name="description" />
+                    <textarea type="text" class="form-control" id="inputDescription" placeholder="Description" name="description"></textarea>
                 </div>
             
                 <div class="form-group">

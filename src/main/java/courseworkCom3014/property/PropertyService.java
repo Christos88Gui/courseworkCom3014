@@ -36,6 +36,13 @@ public class PropertyService {
     }
 
     /**
+    * Receives an id, passes it to repository's function findOne() and returns the result.
+    */
+    public void removeById(long id){
+    propertyRepository.delete(id);
+    }
+    
+    /**
     * Receives a Property, passes it to repository's function save() and returns it.
     */
     @Transactional

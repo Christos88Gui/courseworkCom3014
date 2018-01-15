@@ -24,12 +24,9 @@ body {
  }
  
  #homepageSlider{
-    width:80%;
-    height:30%;
-    border:2px solid black;
-    margin: 0 auto;
-    display:block;
-    position: relative;
+   width:100%;
+   height:auto;
+   margin-top: 20%;
  }
 
 #detailsSlider{
@@ -69,7 +66,7 @@ body {
 }
 
 #homepageSearchContainer{        
-    height:75%;    
+    height:auto;    
     width:35%;
     font-size:15px;
     border: 2px solid black;
@@ -80,6 +77,14 @@ body {
     left:5%;
 }
 
+#createPropertyContainer{
+    margin-top:9%;
+    position: relative;
+    width:500px;
+    height: auto;
+    font-size:17px;
+}
+
 #adminButton{
     color:red; font-size:18px; border:1px solid red;
 }
@@ -88,16 +93,19 @@ body {
     margin-top:13%;
 }
 
-
+#soldPropertiesImage{
+    width:85%; border:1px solid black;
+}
 
 /*------------ CUSTOM CLASSES ------------*/
- a{
-     color:blue;
- }
+
+a{
+    color:blue;
+}
  
- label{
-     font-size:16px;
- } 
+label{
+    font-size:16px;
+} 
  
 .generalUseContainer{ 
     height:auto;   
@@ -113,7 +121,7 @@ body {
 }
 
 .propertiesInnerContainer{ 
-    width:95%; height:330px;
+    width:95%; height:auto;
 }
 
 .cstmBtn, .cstmBtn:hover,.cstmBtn:active, .cstmBtn:after {
@@ -122,6 +130,7 @@ body {
     border:none;
     outline:none;
     position: relative;
+    text-align: center;
 }
 
 .hiddenElement{
@@ -136,12 +145,18 @@ body {
     margin: 0 auto; text-align: center; position:relative;
 }
 
+.adminPageTitle{
+    margin-top:15%;
+    color:black;
+}
+
 .propertyImageSmall{
     float:right; 
     margin-top:4%;
+    margin-bottom: 4%;
     width:55%; 
     height:270px; 
-    border:2px solid black;   
+    border:1px solid black;   
 }
 
 .formHeader{
