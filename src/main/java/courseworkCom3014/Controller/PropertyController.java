@@ -37,13 +37,22 @@ public class PropertyController {
     }
     
     
-    
+    /**
+    * Can be called only by the administrator account,
+    * Redirects to 'createProperty' view.
+    */ 
     @Secured({"ROLE_ADMIN"})
     @RequestMapping("/createPropertyPage")
     public String createProperty(){        
         return "properties/createProperty";
     }
     
+    
+     /**
+    * Can be called only by the administrator account,
+    * Receive all fields of a Property and then creates a new Property with these details,
+    * The method manually assigns the Property an id, which is always the existing biggest id plus one
+    */
     @Secured({"ROLE_ADMIN"})
     @RequestMapping("/createProperty")
     public String createProperty(String address, String postcode, String property_type,int square_meters,  int year_built,int price, String description){              
@@ -54,8 +63,10 @@ public class PropertyController {
     }
     
     
-    
-    
+    /**
+    * Can be called only by the administrator account,
+    * Redirects to 'deleteProperty' view and passes a list of all properties as an attribute.
+    */ 
     @Secured({"ROLE_ADMIN"})
     @RequestMapping("/deletePropertyPage")
     public String deleteProperty(Model model){        
@@ -68,6 +79,10 @@ public class PropertyController {
         return "properties/deleteProperty";
     }
     
+    /**
+    * Can be called only by the administrator account,
+    * Receives an id of a Property as a parameter, deletes it and redirects to 'deleteProperty' view
+    */ 
     @Secured({"ROLE_ADMIN"})
     @RequestMapping("/deleteProperty")
     public String deleteProperty(long id){        

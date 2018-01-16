@@ -21,23 +21,23 @@
             <p class="formHeader">Please Sign Up</p>
             <br>
             <div class="form-group" th:classappend="${#fields.hasErrors('email')}? 'has-error'">
-                <label for="email" class="control-label">Email</label>
+                <label for="email" class="control-label">Email*</label>
                 <br>
                 <input required type="text" class="form-control" id="email" placeholder="Email address" th:field="*{email}" />
                 <span class="help-block" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Incorrect email</span>
             </div>
             <div class="form-group" th:classappend="${#fields.hasErrors('password')}? 'has-error'">
-                <label for="password" class="control-label" >Password</label>
+                <label for="password" class="control-label" >Password*</label>
                 <input required minlength="6" type="password" class="form-control" id="password" placeholder="Password" th:field="*{password}" />
                 <span class="help-block" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Incorrect password</span>
             </div>
             <div class="form-group" th:classappend="${#fields.hasErrors('firstname')}? 'has-error'">
-                <label for="firstname" class="control-label">Firstname</label>
+                <label for="firstname" class="control-label">Firstname*</label>
                 <input required type="text" class="form-control" id="firstname" placeholder="Firstname" th:field="*{firstname}"/> 
                 <span class="help-block" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">Blank firstname</span>
             </div>
             <div class="form-group" th:classappend="${#fields.hasErrors('lastname')}? 'has-error'">
-                <label for="lastname" class="control-label">Lastname</label>
+                <label for="lastname" class="control-label">Lastname*</label>
                 <input required type="text" class="form-control" id="lastname" placeholder="Lastname" th:field="*{lastname}"/>  
                 <span class="help-block" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Blank lastname</span>
             </div>   
